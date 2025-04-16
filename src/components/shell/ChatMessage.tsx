@@ -1,3 +1,4 @@
+
 import React, { ReactNode, useEffect, useRef, forwardRef } from "react";
 import { cn } from "@/lib/utils";
 
@@ -44,8 +45,8 @@ export const ChatMessage = forwardRef<HTMLDivElement, ChatMessageProps>(({
           <div className="text-[#616161] text-xs leading-4 mr-4 mb-1">{timestamp}</div>
           <div className="text-sm text-[#242424] leading-5">
             <div className={cn(
-              "bg-[rgba(232,235,250,1)] inline-block px-4 py-2 rounded-md",
-              isHighlighted && "animate-pulse-nudge bg-[rgba(162,165,175,1)]"
+              "bg-[rgba(232,235,250,1)] inline-block px-4 py-2 rounded-md transition-colors",
+              isHighlighted && "animate-pulse-nudge"
             )}>
               <div className="text-right">
                 {content}
@@ -86,8 +87,8 @@ export const ChatMessage = forwardRef<HTMLDivElement, ChatMessageProps>(({
               <div>{timestamp}</div>
             </div>
             <div className={cn(
-              "bg-neutral-100 w-full mt-[7px] pb-5 px-4 pt-5 rounded-md max-md:max-w-full",
-              isHighlighted && "animate-pulse-nudge bg-[rgba(87,87,87,1)]"
+              "bg-neutral-100 w-full mt-[7px] pb-5 px-4 pt-5 rounded-md max-md:max-w-full transition-colors",
+              isHighlighted && "animate-pulse-nudge"
             )}>
               <div className="flex w-full flex-col items-stretch max-md:max-w-full">
                 <div className="w-full max-md:max-w-full">
