@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -109,10 +110,13 @@
 }
 
 @keyframes pulse-nudge {
-  0%, 100% { background-color: inherit; }
-  50% { background-color: currentColor; }
+  0% { background-color: inherit; }
+  50% { background-color: var(--highlight-color); }
+  100% { background-color: inherit; }
 }
 
 .animate-pulse-nudge {
-  animation: pulse-nudge 0.5s ease-in-out;
+  --highlight-color: currentColor;
+  animation: pulse-nudge 0.5s ease-in-out 0.3s; /* Added 0.3s delay */
+  animation-fill-mode: both; /* Ensures the animation applies after the delay */
 }

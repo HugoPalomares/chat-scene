@@ -46,7 +46,7 @@ export const ChatMessage = forwardRef<HTMLDivElement, ChatMessageProps>(({
           <div className="text-sm text-[#242424] leading-5">
             <div className={cn(
               "bg-[rgba(232,235,250,1)] inline-block px-4 py-2 rounded-md",
-              isHighlighted && "animate-pulse-nudge bg-[rgba(182,189,231,1)]"
+              isHighlighted && "animate-pulse-nudge bg-[rgba(196,202,235,1)]"
             )}>
               <div className="text-right">
                 {content}
@@ -88,7 +88,7 @@ export const ChatMessage = forwardRef<HTMLDivElement, ChatMessageProps>(({
             </div>
             <div className={cn(
               "bg-neutral-100 w-full mt-[7px] pb-5 px-4 pt-5 rounded-md max-md:max-w-full",
-              isHighlighted && "animate-pulse-nudge bg-neutral-300"
+              isHighlighted && "animate-pulse-nudge bg-neutral-200"
             )}>
               <div className="flex w-full flex-col items-stretch max-md:max-w-full">
                 <div className="w-full max-md:max-w-full">
