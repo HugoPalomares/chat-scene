@@ -6,6 +6,7 @@ import { LeftRail } from "./LeftRail";
 import { ChatHeader } from "./ChatHeader";
 import { ChatContent } from "./ChatContent";
 import { ChatCompose } from "./ChatCompose";
+import { X } from "lucide-react";
 
 export const Shell: React.FC = () => {
   const [rightSideVisible, setRightSideVisible] = useState(false);
@@ -32,8 +33,15 @@ export const Shell: React.FC = () => {
               </div>
               {rightSideVisible && (
                 <div className="w-72 border-l border-[rgba(0,0,0,0.05)] flex flex-col">
-                  <div className="p-4 border-b border-[rgba(0,0,0,0.05)]">
+                  <div className="p-4 border-b border-[rgba(0,0,0,0.05)] flex justify-between items-center">
                     <h2 className="text-[#242424] text-lg font-bold leading-none">Agent Details</h2>
+                    <button 
+                      onClick={toggleRightSide} 
+                      className="text-gray-500 hover:text-gray-700"
+                      aria-label="Close panel"
+                    >
+                      <X className="h-5 w-5" />
+                    </button>
                   </div>
                   <div className="p-4 flex-1 overflow-auto">
                     {/* Content will go here */}

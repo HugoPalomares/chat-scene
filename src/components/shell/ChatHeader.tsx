@@ -27,10 +27,10 @@ export const ChatHeader: React.FC<ChatHeaderProps> = ({
         </div>
         {onToggleRightSide && (
           <Button 
-            variant="outline" 
+            variant="ghost" 
             size="icon" 
             onClick={onToggleRightSide}
-            className="border-[#8E9196] bg-white hover:bg-gray-100"
+            className="bg-white hover:bg-gray-100"
             aria-label={rightSideVisible ? "Close panel" : "Open panel"}
           >
             {rightSideVisible ? 
