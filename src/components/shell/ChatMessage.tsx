@@ -1,3 +1,4 @@
+
 import React, { ReactNode } from "react";
 
 interface ChatMessageProps {
@@ -18,14 +19,12 @@ export const ChatMessage: React.FC<ChatMessageProps> = ({
   if (isUser) {
     return (
       <div className="rounded flex w-full max-w-[1052px] justify-end ml-auto gap-1.5 max-md:max-w-full">
-        <div className="flex w-[197px] flex-col items-end flex-1 shrink basis-[0%]">
-          <div className="text-[#616161] text-xs leading-4 mr-4">{timestamp}</div>
-          <div className="w-full text-sm text-[#242424] leading-5">
-            <div className="bg-[rgba(232,235,250,1)] flex w-full flex-col items-stretch justify-center px-4 py-2 rounded-md">
-              <div className="w-full text-right">
-                <div className="flex-1 shrink basis-[0%] w-full gap-0.5">
-                  {content}
-                </div>
+        <div className="flex flex-col items-end">
+          <div className="text-[#616161] text-xs leading-4 mr-4 mb-1">{timestamp}</div>
+          <div className="text-sm text-[#242424] leading-5">
+            <div className="bg-[rgba(232,235,250,1)] inline-block px-4 py-2 rounded-md">
+              <div className="text-right">
+                {content}
               </div>
             </div>
           </div>
@@ -75,3 +74,4 @@ export const ChatMessage: React.FC<ChatMessageProps> = ({
     </div>
   );
 };
+
