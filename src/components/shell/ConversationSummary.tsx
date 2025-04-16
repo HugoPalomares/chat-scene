@@ -82,7 +82,7 @@ export const ConversationSummary: React.FC<ConversationSummaryProps> = ({ onEven
   return (
     <div className="h-full overflow-hidden flex flex-col">
       {/* Confidence Summary Section - Stock Market Style */}
-      <div className="mb-4 p-3 border border-[rgba(0,0,0,0.1)] rounded-md bg-white">
+      <div className="mb-6 p-3 border border-[rgba(0,0,0,0.1)] rounded-md bg-white">
         <div className="flex items-center justify-between mb-1">
           <h3 className="text-xs uppercase font-semibold text-gray-500">Agent Confidence</h3>
           <div className="flex items-center gap-1">
@@ -183,3 +183,5 @@ export const ConversationSummary: React.FC<ConversationSummaryProps> = ({ onEven
     </div>
   );
 };
+
+export { ConversationSummary };
