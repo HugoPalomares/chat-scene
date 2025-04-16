@@ -16,12 +16,14 @@ export const Shell: React.FC = () => {
         <LeftRail />
         <div className="min-w-60 flex-1 shrink basis-[0%] flex flex-col max-md:max-w-full">
           <ChatHeader />
-          <div className="bg-white w-full flex-1 flex flex-col max-md:max-w-full">
+          <div className="bg-white w-full flex-1 flex flex-col max-md:max-w-full relative">
             <ChatContent />
-            <ChatCompose />
+            <div className="sticky bottom-0 left-0 right-0 z-10">
+              <ChatCompose />
+            </div>
           </div>
         </div>
       </div>
     </div>
   );
-}
+};
