@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -11,7 +10,6 @@ interface ConversationSummaryProps {
 }
 
 export const ConversationSummary: React.FC<ConversationSummaryProps> = ({ onEventClick }) => {
-  // This would typically come from a real data source
   const summaryData = {
     timeline: [
       { date: "May 12", events: [
@@ -93,7 +91,7 @@ export const ConversationSummary: React.FC<ConversationSummaryProps> = ({ onEven
                 {day.events.map((event, eventIndex) => (
                   <Card 
                     key={eventIndex} 
-                    className="border-l-4 border-l-purple-200 hover:bg-gray-50 cursor-pointer transition-colors"
+                    className="border-l-4 border-l-[#5B5FC7] hover:bg-gray-50 cursor-pointer transition-colors"
                     onClick={() => handleEventClick(event.messageId)}
                   >
                     <CardContent className="p-3">
