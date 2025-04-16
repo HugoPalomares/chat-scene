@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -5,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, Clock, MessageSquare, CheckCircle, AlertCircle } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { Progress } from "@/components/ui/progress";
 
 interface ConversationSummaryProps {
   onEventClick?: (messageId: string) => void;
@@ -41,7 +43,12 @@ export const ConversationSummary: React.FC<ConversationSummaryProps> = ({ onEven
       { text: "Revoked access for Julia after department transfer", status: "revoked", messageId: "msg-13" },
       { text: "Revoked access for 10 Marketing users (confirmed with John)", status: "revoked", messageId: "msg-15" },
     ],
-    pendingActions: []
+    pendingActions: [],
+    confidenceData: {
+      initialConfidence: 72,
+      finalConfidence: 94,
+      improvementAreas: ["Department-specific roles", "Project context", "Personnel changes"]
+    }
   };
 
   const getEventIcon = (type: string) => {
@@ -74,7 +81,37 @@ export const ConversationSummary: React.FC<ConversationSummaryProps> = ({ onEven
 
   return (
     <div className="h-full overflow-hidden flex flex-col">
-      <div className="text-[14px] font-medium mb-2">Conversation Summary</div>
+      {/* Confidence Summary Section */}
+      <div className="mb-4 p-2 border border-[rgba(0,0,0,0.1)] rounded-md bg-[#f8f8fc]">
+        <h3 className="text-xs uppercase font-semibold text-gray-500 mb-2">Agent Confidence</h3>
+        <div className="space-y-3">
+          <div>
+            <div className="flex justify-between text-xs mb-1">
+              <span>Initial</span>
+              <span className="font-medium">{summaryData.confidenceData.initialConfidence}%</span>
+            </div>
+            <Progress value={summaryData.confidenceData.initialConfidence} className="h-2" />
+          </div>
+          <div>
+            <div className="flex justify-between text-xs mb-1">
+              <span>After collaboration</span>
+              <span className="font-medium">{summaryData.confidenceData.finalConfidence}%</span>
+            </div>
+            <Progress value={summaryData.confidenceData.finalConfidence} className="h-2 bg-gray-100">
+              <div className="h-full bg-[#5B5FC7]" style={{ width: `${summaryData.confidenceData.finalConfidence}%` }} />
+            </Progress>
+          </div>
+          <div className="pt-1">
+            <p className="text-xs text-gray-500">Improved understanding in:</p>
+            <div className="flex flex-wrap gap-1 mt-1">
+              {summaryData.confidenceData.improvementAreas.map((area, index) => (
+                <Badge key={index} variant="outline" className="text-xs bg-[#5B5FC7]/10 border-[#5B5FC7]/20 text-[#5B5FC7] hover:bg-[#5B5FC7]/20">{area}</Badge>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
       <Tabs defaultValue="timeline" className="w-full h-full flex flex-col">
         <TabsList className="grid w-full grid-cols-2">
           <TabsTrigger value="timeline">Timeline</TabsTrigger>
