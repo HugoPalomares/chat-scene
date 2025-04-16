@@ -46,7 +46,7 @@ export const ConversationSummary: React.FC<ConversationSummaryProps> = ({ onEven
     confidenceData: {
       initialConfidence: 72,
       finalConfidence: 94,
-      confidenceChange: "+22",
+      confidenceChange: "22",
       improvementAreas: ["Department-specific roles", "Project context", "Personnel changes"]
     }
   };
@@ -183,5 +183,3 @@ export const ConversationSummary: React.FC<ConversationSummaryProps> = ({ onEven
     </div>
   );
 };
-
-export { ConversationSummary };
