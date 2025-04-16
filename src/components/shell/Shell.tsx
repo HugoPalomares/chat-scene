@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { TitleBar } from "./TitleBar";
 import { AppBar } from "./AppBar";
@@ -10,7 +9,7 @@ import { X } from "lucide-react";
 import { ConversationSummary } from "./ConversationSummary";
 
 export const Shell: React.FC = () => {
-  const [rightSideVisible, setRightSideVisible] = useState(false);
+  const [rightSideVisible, setRightSideVisible] = useState(true);
   const [highlightedMessage, setHighlightedMessage] = useState<string | undefined>(undefined);
 
   const toggleRightSide = () => {
