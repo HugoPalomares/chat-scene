@@ -1,9 +1,10 @@
+
 import React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, Clock, MessageSquare, CheckCircle, AlertCircle, TrendingUp, ChevronDown } from "lucide-react";
+import { Calendar, Clock, MessageSquare, CheckCircle, AlertCircle, TrendingUp, ChevronDown, ChevronUp } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 
@@ -115,19 +116,28 @@ export const ConversationSummary: React.FC<ConversationSummaryProps> = ({ onEven
         <TabsContent value="timeline" className="flex-1 overflow-hidden">
           <ScrollArea className="h-full pr-4">
             {summaryData.timeline.map((day, dayIndex) => (
-              <Collapsible key={dayIndex} className="mb-4" defaultOpen={true}>
-                <div className="flex items-center justify-between mb-2">
+              <Collapsible 
+                key={dayIndex} 
+                className="mb-4" 
+                defaultOpen={dayIndex === 1} // Only May 14 (index 1) open by default
+              >
+                <CollapsibleTrigger className="w-full flex items-center justify-between p-2 hover:bg-gray-50 rounded cursor-pointer">
                   <div className="flex items-center gap-2">
                     <Calendar className="h-4 w-4 text-gray-500" />
                     <h3 className="text-sm font-medium text-gray-700">{day.date}</h3>
                   </div>
-                  <CollapsibleTrigger className="rounded-full p-1 hover:bg-gray-100 transition-colors">
-                    <ChevronDown className="h-4 w-4 text-gray-500 transition-transform duration-200 data-[state=open]:rotate-180" />
-                  </CollapsibleTrigger>
-                </div>
+                  <div className="rounded-full p-1 hover:bg-gray-100 transition-colors">
+                    {/* Change icon based on open/closed state */}
+                    {open => (
+                      open ? 
+                      <ChevronUp className="h-4 w-4 text-gray-500" /> : 
+                      <ChevronDown className="h-4 w-4 text-gray-500" />
+                    )}
+                  </div>
+                </CollapsibleTrigger>
                 
                 <CollapsibleContent className="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
-                  <div className="space-y-2">
+                  <div className="space-y-2 mt-2">
                     {day.events.map((event, eventIndex) => (
                       <Card 
                         key={eventIndex} 
@@ -159,7 +169,7 @@ export const ConversationSummary: React.FC<ConversationSummaryProps> = ({ onEven
         
         <TabsContent value="decisions" className="flex-1 overflow-hidden">
           <ScrollArea className="h-full pr-4">
-            <Accordion type="single" collapsible className="w-full">
+            <Accordion type="single" collapsible className="w-full" defaultValue="decisions">
               <AccordionItem value="decisions">
                 <AccordionTrigger className="py-2">
                   <div className="flex items-center gap-2">
