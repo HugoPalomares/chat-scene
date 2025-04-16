@@ -1,3 +1,4 @@
+
 import React from "react";
 
 export const ChatHeader: React.FC = () => {
@@ -15,8 +16,8 @@ export const ChatHeader: React.FC = () => {
           </div>
         </div>
       </div>
-      <div className="pt-[5px] pb-1 max-md:max-w-full">
-        <div className="border min-h-px w-full border-[rgba(0,0,0,0.05)] border-solid max-md:max-w-full" />
+      <div className="absolute bottom-0 left-0 right-0">
+        <div className="border-b min-h-px w-full border-[rgba(0,0,0,0.05)] border-solid" />
       </div>
     </div>
   );
