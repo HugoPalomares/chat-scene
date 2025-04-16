@@ -4,9 +4,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, Clock, MessageSquare, CheckCircle, AlertCircle } from "lucide-react";
+import { Calendar, Clock, MessageSquare, CheckCircle, AlertCircle, TrendingUp } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Progress } from "@/components/ui/progress";
 
 interface ConversationSummaryProps {
   onEventClick?: (messageId: string) => void;
@@ -47,6 +46,7 @@ export const ConversationSummary: React.FC<ConversationSummaryProps> = ({ onEven
     confidenceData: {
       initialConfidence: 72,
       finalConfidence: 94,
+      confidenceChange: "+22",
       improvementAreas: ["Department-specific roles", "Project context", "Personnel changes"]
     }
   };
@@ -81,33 +81,27 @@ export const ConversationSummary: React.FC<ConversationSummaryProps> = ({ onEven
 
   return (
     <div className="h-full overflow-hidden flex flex-col">
-      {/* Confidence Summary Section */}
-      <div className="mb-4 p-2 border border-[rgba(0,0,0,0.1)] rounded-md bg-[#f8f8fc]">
-        <h3 className="text-xs uppercase font-semibold text-gray-500 mb-2">Agent Confidence</h3>
-        <div className="space-y-3">
-          <div>
-            <div className="flex justify-between text-xs mb-1">
-              <span>Initial</span>
-              <span className="font-medium">{summaryData.confidenceData.initialConfidence}%</span>
-            </div>
-            <Progress value={summaryData.confidenceData.initialConfidence} className="h-2" />
+      {/* Confidence Summary Section - Stock Market Style */}
+      <div className="mb-4 p-3 border border-[rgba(0,0,0,0.1)] rounded-md bg-white">
+        <div className="flex items-center justify-between mb-1">
+          <h3 className="text-xs uppercase font-semibold text-gray-500">Agent Confidence</h3>
+          <div className="flex items-center gap-1">
+            <TrendingUp className="h-4 w-4 text-green-500" />
+            <span className="text-green-500 font-bold text-lg">+{summaryData.confidenceData.confidenceChange}%</span>
           </div>
-          <div>
-            <div className="flex justify-between text-xs mb-1">
-              <span>After collaboration</span>
-              <span className="font-medium">{summaryData.confidenceData.finalConfidence}%</span>
-            </div>
-            <Progress value={summaryData.confidenceData.finalConfidence} className="h-2 bg-gray-100">
-              <div className="h-full bg-[#5B5FC7]" style={{ width: `${summaryData.confidenceData.finalConfidence}%` }} />
-            </Progress>
-          </div>
-          <div className="pt-1">
-            <p className="text-xs text-gray-500">Improved understanding in:</p>
-            <div className="flex flex-wrap gap-1 mt-1">
-              {summaryData.confidenceData.improvementAreas.map((area, index) => (
-                <Badge key={index} variant="outline" className="text-xs bg-[#5B5FC7]/10 border-[#5B5FC7]/20 text-[#5B5FC7] hover:bg-[#5B5FC7]/20">{area}</Badge>
-              ))}
-            </div>
+        </div>
+        
+        <div className="flex items-baseline gap-2 mb-3">
+          <span className="text-2xl font-bold">{summaryData.confidenceData.finalConfidence}%</span>
+          <span className="text-sm text-gray-500">from {summaryData.confidenceData.initialConfidence}%</span>
+        </div>
+        
+        <div>
+          <p className="text-xs text-gray-500 mb-1">Improved understanding in:</p>
+          <div className="flex flex-wrap gap-1">
+            {summaryData.confidenceData.improvementAreas.map((area, index) => (
+              <Badge key={index} variant="outline" className="text-xs bg-[#5B5FC7]/10 border-[#5B5FC7]/20 text-[#5B5FC7] hover:bg-[#5B5FC7]/20">{area}</Badge>
+            ))}
           </div>
         </div>
       </div>
@@ -162,7 +156,6 @@ export const ConversationSummary: React.FC<ConversationSummaryProps> = ({ onEven
               <AccordionItem value="decisions">
                 <AccordionTrigger className="py-2">
                   <div className="flex items-center gap-2">
-                    <CheckCircle className="h-4 w-4 text-green-500" />
                     <span>All Decisions ({summaryData.decisions.length})</span>
                   </div>
                 </AccordionTrigger>
