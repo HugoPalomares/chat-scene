@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -49,6 +50,10 @@
     --sidebar-border: 220 13% 91%;
 
     --sidebar-ring: 217.2 91.2% 59.8%;
+    
+    /* Custom highlight colors for message pulses */
+    --user-highlight: 232 70% 85%;
+    --ai-highlight: 0 0% 80%;
   }
 
   .dark {
@@ -87,6 +92,10 @@
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+    
+    /* Dark mode highlight colors */
+    --user-highlight: 232 30% 35%;
+    --ai-highlight: 0 0% 25%;
   }
 }
 
@@ -98,4 +107,24 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Custom animation classes for the message bubbles */
+.user-message-highlight {
+  --highlight-color: hsl(var(--user-highlight));
+}
+
+.ai-message-highlight {
+  --highlight-color: hsl(var(--ai-highlight));
+}
+
+@keyframes double-pulse {
+  0%, 100% { background-color: inherit; }
+  25% { background-color: var(--highlight-color); }
+  50% { background-color: inherit; }
+  75% { background-color: var(--highlight-color); }
+}
+
+.double-pulse {
+  animation: double-pulse 1.5s ease-in-out;
 }
