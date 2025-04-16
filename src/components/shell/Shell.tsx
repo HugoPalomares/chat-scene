@@ -7,6 +7,7 @@ import { ChatHeader } from "./ChatHeader";
 import { ChatContent } from "./ChatContent";
 import { ChatCompose } from "./ChatCompose";
 import { X } from "lucide-react";
+import { ConversationSummary } from "./ConversationSummary";
 
 export const Shell: React.FC = () => {
   const [rightSideVisible, setRightSideVisible] = useState(false);
@@ -34,7 +35,7 @@ export const Shell: React.FC = () => {
               {rightSideVisible && (
                 <div className="w-72 border-l border-[rgba(0,0,0,0.05)] flex flex-col">
                   <div className="p-4 border-b border-[rgba(0,0,0,0.05)] flex justify-between items-center">
-                    <h2 className="text-[#242424] text-lg font-bold leading-none">Agent Details</h2>
+                    <h2 className="text-[#242424] text-lg font-bold leading-none">Conversation Summary</h2>
                     <button 
                       onClick={toggleRightSide} 
                       className="text-gray-500 hover:text-gray-700"
@@ -44,7 +45,7 @@ export const Shell: React.FC = () => {
                     </button>
                   </div>
                   <div className="p-4 flex-1 overflow-auto">
-                    {/* Content will go here */}
+                    <ConversationSummary />
                   </div>
                 </div>
               )}
