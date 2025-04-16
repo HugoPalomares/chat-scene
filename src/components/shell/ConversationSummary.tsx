@@ -4,8 +4,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, Clock, MessageSquare, CheckCircle, AlertCircle, TrendingUp } from "lucide-react";
+import { Calendar, Clock, MessageSquare, CheckCircle, AlertCircle, TrendingUp, ChevronDown, ChevronUp } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 
 interface ConversationSummaryProps {
   onEventClick?: (messageId: string) => void;
@@ -115,37 +116,48 @@ export const ConversationSummary: React.FC<ConversationSummaryProps> = ({ onEven
         <TabsContent value="timeline" className="flex-1 overflow-hidden">
           <ScrollArea className="h-full pr-4">
             {summaryData.timeline.map((day, dayIndex) => (
-              <div key={dayIndex} className="mb-4">
-                <div className="flex items-center gap-2 mb-2">
-                  <Calendar className="h-4 w-4 text-gray-500" />
-                  <h3 className="text-sm font-medium text-gray-700">{day.date}</h3>
+              <Collapsible key={dayIndex} className="mb-4" defaultOpen={true}>
+                <div className="flex items-center justify-between mb-2">
+                  <div className="flex items-center gap-2">
+                    <Calendar className="h-4 w-4 text-gray-500" />
+                    <h3 className="text-sm font-medium text-gray-700">{day.date}</h3>
+                  </div>
+                  <CollapsibleTrigger className="rounded-full p-1 hover:bg-gray-100 transition-colors">
+                    {open => (
+                      <div className="flex items-center justify-center h-5 w-5">
+                        <ChevronDown className="h-4 w-4 text-gray-500 transition-transform duration-200 data-[state=open]:rotate-180" />
+                      </div>
+                    )}
+                  </CollapsibleTrigger>
                 </div>
                 
-                <div className="space-y-2">
-                  {day.events.map((event, eventIndex) => (
-                    <Card 
-                      key={eventIndex} 
-                      className="border-l-4 border-l-[#5B5FC7] hover:bg-gray-50 cursor-pointer transition-colors"
-                      onClick={() => handleEventClick(event.messageId)}
-                    >
-                      <CardContent className="p-3">
-                        <div className="flex items-start gap-2">
-                          <div className="mt-0.5">
-                            {getEventIcon(event.type)}
-                          </div>
-                          <div className="flex-1">
-                            <p className="text-sm">{event.text}</p>
-                            <div className="flex items-center gap-1 mt-1">
-                              <Clock className="h-3 w-3 text-gray-400" />
-                              <span className="text-xs text-gray-500">{event.time}</span>
+                <CollapsibleContent className="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
+                  <div className="space-y-2">
+                    {day.events.map((event, eventIndex) => (
+                      <Card 
+                        key={eventIndex} 
+                        className="border-l-4 border-l-[#5B5FC7] hover:bg-gray-50 cursor-pointer transition-colors"
+                        onClick={() => handleEventClick(event.messageId)}
+                      >
+                        <CardContent className="p-3">
+                          <div className="flex items-start gap-2">
+                            <div className="mt-0.5">
+                              {getEventIcon(event.type)}
+                            </div>
+                            <div className="flex-1">
+                              <p className="text-sm">{event.text}</p>
+                              <div className="flex items-center gap-1 mt-1">
+                                <Clock className="h-3 w-3 text-gray-400" />
+                                <span className="text-xs text-gray-500">{event.time}</span>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-              </div>
+                        </CardContent>
+                      </Card>
+                    ))}
+                  </div>
+                </CollapsibleContent>
+              </Collapsible>
             ))}
           </ScrollArea>
         </TabsContent>
