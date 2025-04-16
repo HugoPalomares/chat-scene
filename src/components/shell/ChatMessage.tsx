@@ -1,3 +1,4 @@
+
 import React, { ReactNode } from "react";
 
 interface ChatMessageProps {
@@ -21,7 +22,7 @@ export const ChatMessage: React.FC<ChatMessageProps> = ({
         <div className="flex flex-col items-end">
           <div className="text-[#616161] text-xs leading-4 mr-4 mb-1">{timestamp}</div>
           <div className="text-sm text-[#242424] leading-5">
-            <div className="bg-[rgba(232,235,250,1)] inline-block px-4 py-2 rounded-md">
+            <div className="bg-[rgba(232,235,250,1)] inline-block px-14 py-14 rounded-md">
               <div className="text-right">
                 {content}
               </div>
@@ -38,7 +39,7 @@ export const ChatMessage: React.FC<ChatMessageProps> = ({
         <div className="flex w-full max-w-[912px] gap-1.5 flex-wrap max-md:max-w-full">
           {avatar && (
             <div className="flex items-start gap-2.5 w-8 pt-0">
-              <div className="rounded bg-[rgba(236,236,236,1)] self-stretch flex w-8 items-center gap-2.5 overflow-hidden h-8 my-auto p-1">
+              <div className="rounded bg-[rgba(236,236,236,1)] self-stretch flex w-8 items-start gap-2.5 overflow-hidden h-8 my-auto p-1">
                 <div className="rounded bg-[rgba(255,255,255,0)] self-stretch flex min-h-6 w-6 items-center overflow-hidden justify-center h-6 my-auto">
                   <img
                     src={avatar}
@@ -54,7 +55,7 @@ export const ChatMessage: React.FC<ChatMessageProps> = ({
               <div>{sender}</div>
               <div>{timestamp}</div>
             </div>
-            <div className="bg-neutral-100 w-full mt-[7px] pb-2 px-4 rounded-md max-md:max-w-full">
+            <div className="bg-neutral-100 w-full mt-[7px] px-14 py-14 rounded-md max-md:max-w-full">
               <div className="flex w-full flex-col items-stretch max-md:max-w-full">
                 <div className="w-full max-md:max-w-full">
                   <div className="text-[#242424] text-sm font-normal leading-5 max-md:max-w-full">
