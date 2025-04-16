@@ -1,7 +1,6 @@
-
 import React from "react";
 import { Avatar, AvatarImage, AvatarFallback } from "../ui/avatar";
-import { CheckCircle2 } from "lucide-react"; // Importing CheckCircle2 for the green checkmark
+import { CheckCircle2 } from "lucide-react";
 
 interface ChatListItemProps {
   avatar: string;
@@ -10,7 +9,7 @@ interface ChatListItemProps {
   isActive?: boolean;
   isUnread?: boolean;
   isBold?: boolean;
-  isVerified?: boolean; // New prop for verification status
+  isVerified?: boolean;
 }
 
 export const ChatListItem: React.FC<ChatListItemProps> = ({
@@ -20,9 +19,8 @@ export const ChatListItem: React.FC<ChatListItemProps> = ({
   isActive = false,
   isUnread = false,
   isBold = false,
-  isVerified = false, // Default to false
+  isVerified = false,
 }) => {
-  // Get initials from name for avatar fallback
   const getInitials = (name: string) => {
     return name
       .split(' ')
@@ -31,7 +29,7 @@ export const ChatListItem: React.FC<ChatListItemProps> = ({
       .toUpperCase()
       .slice(0, 2);
   };
-  
+
   return (
     <div className="w-full font-normal px-1">
       <div
@@ -54,7 +52,7 @@ export const ChatListItem: React.FC<ChatListItemProps> = ({
               </Avatar>
               {isVerified && (
                 <CheckCircle2 
-                  className="absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2 w-3 h-3 text-green-500" 
+                  className="absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2 w-3 h-3 text-green-500 z-10" 
                   fill="white" 
                   strokeWidth={2} 
                 />
