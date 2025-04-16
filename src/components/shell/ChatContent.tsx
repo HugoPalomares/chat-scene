@@ -23,11 +23,7 @@ export const ChatContent: React.FC = () => {
           </>
         }
       />
-      <ChatMessage
-        isUser={true}
-        timestamp="5/12, 9:15 AM"
-        content="Yes! let's finish the review"
-      />
+      {/* User message removed as requested */}
     </div>
   );
 };
