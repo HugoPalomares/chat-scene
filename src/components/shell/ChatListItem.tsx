@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Avatar, AvatarImage, AvatarFallback } from "../ui/avatar";
 
@@ -29,9 +28,7 @@ export const ChatListItem: React.FC<ChatListItemProps> = ({
       .slice(0, 2);
   };
 
-  // List of names to remove overflow-hidden
   const noOverflowNames = [
-    'Emiliano Ceballos', 
     'Serena Davis', 
     'Oscar Krogh', 
     'Kian Lambert', 
