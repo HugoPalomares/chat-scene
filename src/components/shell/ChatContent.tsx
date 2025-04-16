@@ -1,10 +1,11 @@
+
 import React from "react";
 import { ChatMessage } from "./ChatMessage";
 import { AccessReviewCard } from "./AccessReviewCard";
 
 export const ChatContent: React.FC = () => {
   return (
-    <div className="flex w-full flex-col flex-1 px-[72px] max-md:max-w-full max-md:px-5">
+    <div className="flex w-full flex-col flex-1 px-[72px] py-10 overflow-y-auto max-md:max-w-full max-md:px-5">
       <ChatMessage
         sender="Access review Agent"
         timestamp="5/12, 9:15 AM"
