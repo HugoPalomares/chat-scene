@@ -2,11 +2,13 @@
 import React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, Clock, MessageSquare, CheckCircle, AlertCircle, TrendingUp, ChevronDown, ChevronUp } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { Button } from "@/components/ui/button";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 interface ConversationSummaryProps {
   onEventClick?: (messageId: string) => void;
@@ -22,7 +24,7 @@ export const ConversationSummary: React.FC<ConversationSummaryProps> = ({ onEven
         { time: "9:18 AM", text: "Discussed 10 Marketing department users", type: "review", messageId: "msg-4" },
         { time: "9:20 AM", text: "User requested to check with John", type: "action", messageId: "msg-5" },
         { time: "9:21 AM", text: "Agent agreed to contact John", type: "response", messageId: "msg-6" },
-        { time: "9:22 AM", text: "Discussed 9 Accounting Clerks", type: "review", messageId: "msg-7" },
+        { time: "9:22 AM", text: "Discussed 9 Accounting Clerks", type: "review", messageId: "msg-7", showJoinButton: true },
         { time: "9:23 AM", text: "User requested justification details", type: "question", messageId: "msg-8" },
         { time: "9:24 AM", text: "Agent provided 'Project Amadeus' justification", type: "info", messageId: "msg-9" },
         { time: "9:26 AM", text: "User confirmed project cancelled, approved revocation", type: "decision", messageId: "msg-10" },
@@ -78,6 +80,12 @@ export const ConversationSummary: React.FC<ConversationSummaryProps> = ({ onEven
     if (onEventClick) {
       onEventClick(messageId);
     }
+  };
+
+  const handleJoinChat = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    console.log("Request to join chat");
+    // This function would typically open a chat with John
   };
 
   // Track the open state of collapsible sections
@@ -159,15 +167,34 @@ export const ConversationSummary: React.FC<ConversationSummaryProps> = ({ onEven
                       >
                         <CardContent className="p-3">
                           <div className="flex items-start gap-2">
-                            <div className="mt-0.5">
-                              {getEventIcon(event.type)}
-                            </div>
+                            {event.text === "Discussed 9 Accounting Clerks" ? (
+                              <Avatar className="h-5 w-5 mt-0.5">
+                                <AvatarImage src="https://images.unsplash.com/photo-1488972685288-c3fd157d7c7a?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=48&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTcxMzIxNzMzMg&ixlib=rb-4.0.3&q=80&w=48" alt="John" />
+                                <AvatarFallback>JD</AvatarFallback>
+                              </Avatar>
+                            ) : (
+                              <div className="mt-0.5">
+                                {getEventIcon(event.type)}
+                              </div>
+                            )}
                             <div className="flex-1">
                               <p className="text-sm">{event.text}</p>
                               <div className="flex items-center gap-1 mt-1">
                                 <Clock className="h-3 w-3 text-gray-400" />
                                 <span className="text-xs text-gray-500">{event.time}</span>
                               </div>
+                              {event.showJoinButton && (
+                                <div className="mt-2">
+                                  <Button 
+                                    variant="outline" 
+                                    size="sm" 
+                                    className="w-full text-xs border-[#5B5FC7] text-[#5B5FC7] hover:bg-[#5B5FC7]/10"
+                                    onClick={handleJoinChat}
+                                  >
+                                    Request to join chat
+                                  </Button>
+                                </div>
+                              )}
                             </div>
                           </div>
                         </CardContent>
