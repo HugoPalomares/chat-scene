@@ -116,15 +116,15 @@ export const ConversationSummary: React.FC<ConversationSummaryProps> = ({ onEven
           <ScrollArea className="h-full pr-4">
             {summaryData.timeline.map((day, dayIndex) => (
               <Collapsible key={dayIndex} className="mb-4" defaultOpen={true}>
-                <div className="flex items-center justify-between mb-2">
-                  <div className="flex items-center gap-2">
-                    <Calendar className="h-4 w-4 text-gray-500" />
-                    <h3 className="text-sm font-medium text-gray-700">{day.date}</h3>
-                  </div>
-                  <CollapsibleTrigger className="rounded-full p-1 hover:bg-gray-100 transition-colors">
+                <CollapsibleTrigger className="w-full">
+                  <div className="flex items-center justify-between mb-2 cursor-pointer hover:bg-gray-50 p-2 -mx-2 rounded-md transition-colors">
+                    <div className="flex items-center gap-2">
+                      <Calendar className="h-4 w-4 text-gray-500" />
+                      <h3 className="text-sm font-medium text-gray-700">{day.date}</h3>
+                    </div>
                     <ChevronDown className="h-4 w-4 text-gray-500 transition-transform duration-200 data-[state=open]:rotate-180" />
-                  </CollapsibleTrigger>
-                </div>
+                  </div>
+                </CollapsibleTrigger>
                 
                 <CollapsibleContent className="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
                   <div className="space-y-2">
