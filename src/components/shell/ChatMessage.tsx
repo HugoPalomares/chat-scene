@@ -1,3 +1,4 @@
+
 import React, { ReactNode } from "react";
 
 interface ChatMessageProps {
@@ -38,7 +39,7 @@ export const ChatMessage: React.FC<ChatMessageProps> = ({
         <div className="flex w-full max-w-[912px] gap-1.5 flex-wrap max-md:max-w-full">
           {avatar && (
             <div className="flex items-start gap-2.5 w-8 pt-0">
-              <div className="rounded bg-[rgba(236,236,236,1)] self-stretch flex w-8 items-center gap-2.5 overflow-hidden h-8 my-auto p-1">
+              <div className="rounded bg-[rgba(236,236,236,1)] self-start flex w-8 items-center gap-2.5 overflow-hidden h-8 p-1">
                 <div className="rounded bg-[rgba(255,255,255,0)] self-stretch flex min-h-6 w-6 items-center overflow-hidden justify-center h-6 my-auto">
                   <img
                     src={avatar}
