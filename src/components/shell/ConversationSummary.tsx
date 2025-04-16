@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -24,7 +23,7 @@ export const ConversationSummary: React.FC<ConversationSummaryProps> = ({ onEven
         { time: "9:18 AM", text: "Discussed 10 Marketing department users", type: "review", messageId: "msg-4" },
         { time: "9:20 AM", text: "User requested to check with John", type: "action", messageId: "msg-5" },
         { time: "9:21 AM", text: "Agent agreed to contact John", type: "response", messageId: "msg-6" },
-        { time: "9:22 AM", text: "Discussed 9 Accounting Clerks", type: "review", messageId: "msg-7", showJoinButton: true },
+        { time: "9:22 AM", text: "Discussed 9 Accounting Clerks with John", type: "review", messageId: "msg-7", showJoinButton: true },
         { time: "9:23 AM", text: "User requested justification details", type: "question", messageId: "msg-8" },
         { time: "9:24 AM", text: "Agent provided 'Project Amadeus' justification", type: "info", messageId: "msg-9" },
         { time: "9:26 AM", text: "User confirmed project cancelled, approved revocation", type: "decision", messageId: "msg-10" },
@@ -88,10 +87,9 @@ export const ConversationSummary: React.FC<ConversationSummaryProps> = ({ onEven
     // This function would typically open a chat with John
   };
 
-  // Track the open state of collapsible sections
   const [openSections, setOpenSections] = React.useState<{ [key: string]: boolean }>({
-    "May 12": false, // May 12 is closed by default
-    "May 14": true,  // May 14 is open by default
+    "May 12": false,
+    "May 14": true,
   });
 
   const toggleSection = (date: string) => {
@@ -103,7 +101,6 @@ export const ConversationSummary: React.FC<ConversationSummaryProps> = ({ onEven
 
   return (
     <div className="h-full overflow-hidden flex flex-col">
-      {/* Confidence Summary Section - Stock Market Style */}
       <div className="mb-6 p-3 border border-[rgba(0,0,0,0.1)] rounded-md bg-white">
         <div className="flex items-center justify-between mb-1">
           <h3 className="text-xs uppercase font-semibold text-gray-500">Agent Confidence</h3>
@@ -167,9 +164,12 @@ export const ConversationSummary: React.FC<ConversationSummaryProps> = ({ onEven
                       >
                         <CardContent className="p-3">
                           <div className="flex items-start gap-2">
-                            {event.text === "Discussed 9 Accounting Clerks" ? (
+                            {event.text === "Discussed 9 Accounting Clerks with John" ? (
                               <Avatar className="h-5 w-5 mt-0.5">
-                                <AvatarImage src="https://images.unsplash.com/photo-1488972685288-c3fd157d7c7a?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=48&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTcxMzIxNzMzMg&ixlib=rb-4.0.3&q=80&w=48" alt="John" />
+                                <AvatarImage 
+                                  src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=48&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTcxMzIxNzMzMg&ixlib=rb-4.0.3&q=80&w=48" 
+                                  alt="John" 
+                                />
                                 <AvatarFallback>JD</AvatarFallback>
                               </Avatar>
                             ) : (
