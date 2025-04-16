@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -83,7 +82,7 @@ export const ConversationSummary: React.FC<ConversationSummaryProps> = ({ onEven
         </TabsList>
         
         <TabsContent value="timeline" className="flex-1 overflow-hidden">
-          <ScrollArea className="h-full pr-2">
+          <ScrollArea className="h-full pr-4">
             {summaryData.timeline.map((day, dayIndex) => (
               <div key={dayIndex} className="mb-4">
                 <div className="flex items-center gap-2 mb-2">
@@ -121,7 +120,7 @@ export const ConversationSummary: React.FC<ConversationSummaryProps> = ({ onEven
         </TabsContent>
         
         <TabsContent value="decisions" className="flex-1 overflow-hidden">
-          <ScrollArea className="h-full pr-2">
+          <ScrollArea className="h-full pr-4">
             <Accordion type="single" collapsible className="w-full">
               <AccordionItem value="decisions">
                 <AccordionTrigger className="py-2">
