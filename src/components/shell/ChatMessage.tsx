@@ -1,4 +1,3 @@
-
 import React, { ReactNode, useEffect, useRef, forwardRef } from "react";
 import { cn } from "@/lib/utils";
 
@@ -46,7 +45,7 @@ export const ChatMessage = forwardRef<HTMLDivElement, ChatMessageProps>(({
           <div className="text-sm text-[#242424] leading-5">
             <div className={cn(
               "bg-[rgba(232,235,250,1)] inline-block px-4 py-2 rounded-md",
-              isHighlighted && "animate-pulse-nudge bg-[rgba(196,202,235,1)]"
+              isHighlighted && "animate-pulse-nudge bg-[rgba(182,189,231,1)]"
             )}>
               <div className="text-right">
                 {content}

@@ -142,17 +142,17 @@ export const ChatContent: React.FC<ChatContentProps> = ({ highlightedMessageId }
   
   useEffect(() => {
     if (highlightedMessageId) {
-      // Add delay to account for scrolling animation time (around 300ms)
+      // Increase delay to 500ms to fully account for scrolling and provide more visibility
       const scrollDelay = setTimeout(() => {
         setCurrentHighlighted(highlightedMessageId);
         
         // Clear highlight effect after animation completes
         const animationDuration = setTimeout(() => {
           setCurrentHighlighted(undefined);
-        }, 500);
+        }, 1000);
         
         return () => clearTimeout(animationDuration);
-      }, 300);
+      }, 500);
       
       return () => clearTimeout(scrollDelay);
     }
