@@ -11,6 +11,7 @@ import { ConversationSummary } from "./ConversationSummary";
 
 export const Shell: React.FC = () => {
   const [rightSideVisible, setRightSideVisible] = useState(false);
+  const [highlightedMessage, setHighlightedMessage] = useState<string | undefined>(undefined);
 
   const toggleRightSide = () => {
     setRightSideVisible(prev => !prev);
@@ -27,7 +28,7 @@ export const Shell: React.FC = () => {
           <div className="bg-white w-full flex-1 flex flex-col max-md:max-w-full relative overflow-hidden border-t border-[rgba(0,0,0,0.05)]">
             <div className="flex flex-1 h-full">
               <div className="flex-1 flex flex-col overflow-hidden">
-                <ChatContent />
+                <ChatContent highlightedMessageId={highlightedMessage} />
                 <div className="sticky bottom-0 left-0 right-0 z-10">
                   <ChatCompose />
                 </div>
@@ -45,7 +46,7 @@ export const Shell: React.FC = () => {
                     </button>
                   </div>
                   <div className="p-4 flex-1 overflow-auto">
-                    <ConversationSummary />
+                    <ConversationSummary onEventClick={(messageId) => setHighlightedMessage(messageId)} />
                   </div>
                 </div>
               )}

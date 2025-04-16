@@ -1,4 +1,6 @@
-import React, { ReactNode } from "react";
+
+import React, { ReactNode, useEffect, useRef, forwardRef } from "react";
+import { cn } from "@/lib/utils";
 
 interface ChatMessageProps {
   sender?: string;
@@ -6,22 +8,47 @@ interface ChatMessageProps {
   content: ReactNode;
   isUser?: boolean;
   avatar?: string;
+  messageId?: string;
+  isHighlighted?: boolean;
 }
 
-export const ChatMessage: React.FC<ChatMessageProps> = ({
+export const ChatMessage = forwardRef<HTMLDivElement, ChatMessageProps>(({
   sender,
   timestamp,
   content,
   isUser = false,
   avatar,
-}) => {
+  messageId,
+  isHighlighted = false,
+}, ref) => {
+  const messageRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (isHighlighted && messageRef.current) {
+      messageRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center',
+      });
+    }
+  }, [isHighlighted]);
+
   if (isUser) {
     return (
-      <div className="rounded flex w-full max-w-[1052px] justify-end ml-auto gap-1.5 max-md:max-w-full mb-4">
+      <div 
+        id={messageId}
+        ref={ref || messageRef}
+        className={cn(
+          "rounded flex w-full max-w-[1052px] justify-end ml-auto gap-1.5 max-md:max-w-full mb-4",
+          isHighlighted && "animate-pulse"
+        )}
+      >
         <div className="flex flex-col items-end">
           <div className="text-[#616161] text-xs leading-4 mr-4 mb-1">{timestamp}</div>
           <div className="text-sm text-[#242424] leading-5">
-            <div className="bg-[rgba(232,235,250,1)] inline-block px-4 py-2 rounded-md">
+            <div className={cn(
+              "bg-[rgba(232,235,250,1)] inline-block px-4 py-2 rounded-md",
+              isHighlighted && "bg-[rgba(220,224,250,1)] transition-colors"
+            )}>
               <div className="text-right">
                 {content}
               </div>
@@ -33,7 +60,14 @@ export const ChatMessage: React.FC<ChatMessageProps> = ({
   }
 
   return (
-    <div className="rounded flex w-full max-w-[1052px] gap-1.5 max-md:max-w-full mb-4">
+    <div 
+      id={messageId}
+      ref={ref || messageRef}
+      className={cn(
+        "rounded flex w-full max-w-[1052px] gap-1.5 max-md:max-w-full mb-4",
+        isHighlighted && "animate-pulse"
+      )}
+    >
       <div className="min-w-60 w-full flex-1 shrink basis-[0%] max-md:max-w-full">
         <div className="flex w-full max-w-[912px] gap-1.5 flex-wrap max-md:max-w-full">
           {avatar && (
@@ -54,7 +88,10 @@ export const ChatMessage: React.FC<ChatMessageProps> = ({
               <div>{sender}</div>
               <div>{timestamp}</div>
             </div>
-            <div className="bg-neutral-100 w-full mt-[7px] pb-5 px-4 pt-5 rounded-md max-md:max-w-full">
+            <div className={cn(
+              "bg-neutral-100 w-full mt-[7px] pb-5 px-4 pt-5 rounded-md max-md:max-w-full",
+              isHighlighted && "bg-neutral-200 transition-colors"
+            )}>
               <div className="flex w-full flex-col items-stretch max-md:max-w-full">
                 <div className="w-full max-md:max-w-full">
                   <div className="text-[#242424] text-sm font-normal leading-5 max-md:max-w-full">
@@ -68,4 +105,6 @@ export const ChatMessage: React.FC<ChatMessageProps> = ({
       </div>
     </div>
   );
-};
+});
+
+ChatMessage.displayName = "ChatMessage";
