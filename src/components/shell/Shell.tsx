@@ -1,30 +1,27 @@
 
 import React from "react";
+import { TitleBar } from "./TitleBar";
 import { AppBar } from "./AppBar";
 import { LeftRail } from "./LeftRail";
-import { TitleBar } from "./TitleBar";
 import { ChatHeader } from "./ChatHeader";
 import { ChatContent } from "./ChatContent";
 import { ChatCompose } from "./ChatCompose";
-import { ChatSimulationProvider } from "@/context/ChatSimulationContext";
 
 export const Shell: React.FC = () => {
   return (
-    <div className="flex flex-col bg-white w-full h-full pt-0">
+    <div className="bg-[rgba(234,234,234,1)] overflow-hidden h-full flex flex-col">
       <TitleBar />
-      <div className="flex-1 flex h-full">
+      <div className="flex w-full items-stretch flex-1 h-[calc(100%-48px)] max-md:max-w-full">
+        <AppBar />
         <LeftRail />
-        <div className="flex-1 flex flex-col h-full overflow-hidden">
-          <AppBar />
-          <ChatSimulationProvider>
-            <div className="flex-1 flex flex-col h-full overflow-hidden">
-              <ChatHeader />
-              <ChatContent />
-              <ChatCompose />
-            </div>
-          </ChatSimulationProvider>
+        <div className="min-w-60 flex-1 shrink basis-[0%] flex flex-col max-md:max-w-full">
+          <ChatHeader />
+          <div className="bg-white w-full flex-1 flex flex-col max-md:max-w-full">
+            <ChatContent />
+            <ChatCompose />
+          </div>
         </div>
       </div>
     </div>
   );
-};
+}
