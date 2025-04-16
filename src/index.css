@@ -131,6 +131,6 @@
 }
 
 .animate-pulse-nudge {
-  animation: pulse-nudge 1.5s cubic-bezier(0.4, 0, 0.2, 1) 0.5s; /* Added smoother easing function */
+  animation: pulse-nudge 1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s; /* Reduced duration from 1.5s to 1s and delay from 0.5s to 0.3s */
   animation-fill-mode: both; /* Ensures the animation applies after the delay */
 }

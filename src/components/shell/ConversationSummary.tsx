@@ -5,6 +5,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, Clock, MessageSquare, CheckCircle, AlertCircle, UserCircle } from "lucide-react";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 interface ConversationSummaryProps {
   onEventClick?: (messageId: string) => void;
@@ -75,78 +76,82 @@ export const ConversationSummary: React.FC<ConversationSummaryProps> = ({ onEven
   return (
     <div className="h-full overflow-hidden flex flex-col">
       <div className="text-[14px] font-medium mb-2">Conversation Summary</div>
-      <Tabs defaultValue="timeline" className="w-full">
+      <Tabs defaultValue="timeline" className="w-full h-full flex flex-col">
         <TabsList className="grid w-full grid-cols-2">
           <TabsTrigger value="timeline">Timeline</TabsTrigger>
           <TabsTrigger value="decisions">Decisions</TabsTrigger>
         </TabsList>
         
-        <TabsContent value="timeline" className="overflow-auto">
-          {summaryData.timeline.map((day, dayIndex) => (
-            <div key={dayIndex} className="mb-4">
-              <div className="flex items-center gap-2 mb-2">
-                <Calendar className="h-4 w-4 text-gray-500" />
-                <h3 className="text-sm font-medium text-gray-700">{day.date}</h3>
-              </div>
-              
-              <div className="space-y-2">
-                {day.events.map((event, eventIndex) => (
-                  <Card 
-                    key={eventIndex} 
-                    className="border-l-4 border-l-[#5B5FC7] hover:bg-gray-50 cursor-pointer transition-colors"
-                    onClick={() => handleEventClick(event.messageId)}
-                  >
-                    <CardContent className="p-3">
-                      <div className="flex items-start gap-2">
-                        <div className="mt-0.5">
-                          {getEventIcon(event.type)}
-                        </div>
-                        <div className="flex-1">
-                          <p className="text-sm">{event.text}</p>
-                          <div className="flex items-center gap-1 mt-1">
-                            <Clock className="h-3 w-3 text-gray-400" />
-                            <span className="text-xs text-gray-500">{event.time}</span>
+        <TabsContent value="timeline" className="flex-1 overflow-hidden">
+          <ScrollArea className="h-full pr-2">
+            {summaryData.timeline.map((day, dayIndex) => (
+              <div key={dayIndex} className="mb-4">
+                <div className="flex items-center gap-2 mb-2">
+                  <Calendar className="h-4 w-4 text-gray-500" />
+                  <h3 className="text-sm font-medium text-gray-700">{day.date}</h3>
+                </div>
+                
+                <div className="space-y-2">
+                  {day.events.map((event, eventIndex) => (
+                    <Card 
+                      key={eventIndex} 
+                      className="border-l-4 border-l-[#5B5FC7] hover:bg-gray-50 cursor-pointer transition-colors"
+                      onClick={() => handleEventClick(event.messageId)}
+                    >
+                      <CardContent className="p-3">
+                        <div className="flex items-start gap-2">
+                          <div className="mt-0.5">
+                            {getEventIcon(event.type)}
+                          </div>
+                          <div className="flex-1">
+                            <p className="text-sm">{event.text}</p>
+                            <div className="flex items-center gap-1 mt-1">
+                              <Clock className="h-3 w-3 text-gray-400" />
+                              <span className="text-xs text-gray-500">{event.time}</span>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </div>
-          ))}
-        </TabsContent>
-        
-        <TabsContent value="decisions" className="overflow-auto">
-          <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value="decisions">
-              <AccordionTrigger className="py-2">
-                <div className="flex items-center gap-2">
-                  <CheckCircle className="h-4 w-4 text-green-500" />
-                  <span>All Decisions ({summaryData.decisions.length})</span>
-                </div>
-              </AccordionTrigger>
-              <AccordionContent>
-                <div className="space-y-2 py-1">
-                  {summaryData.decisions.map((decision, index) => (
-                    <div 
-                      key={index} 
-                      className="flex items-center justify-between rounded-md p-2 hover:bg-gray-50 cursor-pointer"
-                      onClick={() => handleEventClick(decision.messageId)}
-                    >
-                      <div className="flex items-center gap-2">
-                        <UserCircle className="h-4 w-4 text-gray-500" />
-                        <span className="text-sm">{decision.text}</span>
-                      </div>
-                      <Badge className={getStatusColor(decision.status)}>
-                        {decision.status}
-                      </Badge>
-                    </div>
+                      </CardContent>
+                    </Card>
                   ))}
                 </div>
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
+              </div>
+            ))}
+          </ScrollArea>
+        </TabsContent>
+        
+        <TabsContent value="decisions" className="flex-1 overflow-hidden">
+          <ScrollArea className="h-full pr-2">
+            <Accordion type="single" collapsible className="w-full">
+              <AccordionItem value="decisions">
+                <AccordionTrigger className="py-2">
+                  <div className="flex items-center gap-2">
+                    <CheckCircle className="h-4 w-4 text-green-500" />
+                    <span>All Decisions ({summaryData.decisions.length})</span>
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent>
+                  <div className="space-y-2 py-1">
+                    {summaryData.decisions.map((decision, index) => (
+                      <div 
+                        key={index} 
+                        className="flex items-center justify-between rounded-md p-2 hover:bg-gray-50 cursor-pointer"
+                        onClick={() => handleEventClick(decision.messageId)}
+                      >
+                        <div className="flex items-center gap-2">
+                          <UserCircle className="h-4 w-4 text-gray-500" />
+                          <span className="text-sm">{decision.text}</span>
+                        </div>
+                        <Badge className={getStatusColor(decision.status)}>
+                          {decision.status}
+                        </Badge>
+                      </div>
+                    ))}
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          </ScrollArea>
         </TabsContent>
       </Tabs>
     </div>
