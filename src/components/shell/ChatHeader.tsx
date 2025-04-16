@@ -1,7 +1,7 @@
 
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { PanelRightClose, PanelRightOpen } from "lucide-react";
 
 interface ChatHeaderProps {
   onToggleRightSide?: () => void;
@@ -27,12 +27,16 @@ export const ChatHeader: React.FC<ChatHeaderProps> = ({
         </div>
         {onToggleRightSide && (
           <Button 
-            variant="ghost" 
+            variant="outline" 
+            size="icon" 
             onClick={onToggleRightSide}
-            className="flex items-center gap-2 text-[#242424] hover:bg-gray-100"
+            className="border-[#8E9196] bg-white hover:bg-gray-100"
+            aria-label={rightSideVisible ? "Close panel" : "Open panel"}
           >
-            Access Review Agent
-            {rightSideVisible ? <ChevronRight size={16} /> : <ChevronLeft size={16} />}
+            {rightSideVisible ? 
+              <PanelRightClose size={18} className="text-[#555555]" /> : 
+              <PanelRightOpen size={18} className="text-[#555555]" />
+            }
           </Button>
         )}
       </div>
