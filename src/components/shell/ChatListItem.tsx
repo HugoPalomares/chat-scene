@@ -1,6 +1,6 @@
+
 import React from "react";
 import { Avatar, AvatarImage, AvatarFallback } from "../ui/avatar";
-import { CheckCircle2 } from "lucide-react";
 
 interface ChatListItemProps {
   avatar: string;
@@ -19,7 +19,6 @@ export const ChatListItem: React.FC<ChatListItemProps> = ({
   isActive = false,
   isUnread = false,
   isBold = false,
-  isVerified = false,
 }) => {
   const getInitials = (name: string) => {
     return name
@@ -29,6 +28,15 @@ export const ChatListItem: React.FC<ChatListItemProps> = ({
       .toUpperCase()
       .slice(0, 2);
   };
+
+  // List of names to remove overflow-hidden
+  const noOverflowNames = [
+    'Emiliano Ceballos', 
+    'Serena Davis', 
+    'Oscar Krogh', 
+    'Kian Lambert', 
+    'Team Design Template'
+  ];
 
   return (
     <div className="w-full font-normal px-1">
@@ -47,7 +55,11 @@ export const ChatListItem: React.FC<ChatListItemProps> = ({
           >
             <div className="relative">
               <Avatar className="w-5 h-5">
-                <AvatarImage src={avatar} alt={name} />
+                <AvatarImage 
+                  src={avatar} 
+                  alt={name} 
+                  className={noOverflowNames.includes(name) ? "" : "overflow-hidden"}
+                />
                 <AvatarFallback className="text-xs">{getInitials(name)}</AvatarFallback>
               </Avatar>
             </div>
