@@ -1,4 +1,3 @@
-
 import React, { ReactNode } from "react";
 
 interface ChatMessageProps {
@@ -55,7 +54,7 @@ export const ChatMessage: React.FC<ChatMessageProps> = ({
               <div>{sender}</div>
               <div>{timestamp}</div>
             </div>
-            <div className="bg-neutral-100 w-full mt-[7px] pb-10 px-4 pt-10 rounded-md max-md:max-w-full">
+            <div className="bg-neutral-100 w-full mt-[7px] pb-5 px-4 pt-5 rounded-md max-md:max-w-full">
               <div className="flex w-full flex-col items-stretch max-md:max-w-full">
                 <div className="w-full max-md:max-w-full">
                   <div className="text-[#242424] text-sm font-normal leading-5 max-md:max-w-full">
@@ -70,4 +69,3 @@ export const ChatMessage: React.FC<ChatMessageProps> = ({
     </div>
   );
 };
-
