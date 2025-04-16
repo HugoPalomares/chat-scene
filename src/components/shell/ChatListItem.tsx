@@ -1,6 +1,7 @@
 
 import React from "react";
 import { Avatar, AvatarImage, AvatarFallback } from "../ui/avatar";
+import { CheckCircle2 } from "lucide-react"; // Importing CheckCircle2 for the green checkmark
 
 interface ChatListItemProps {
   avatar: string;
@@ -9,6 +10,7 @@ interface ChatListItemProps {
   isActive?: boolean;
   isUnread?: boolean;
   isBold?: boolean;
+  isVerified?: boolean; // New prop for verification status
 }
 
 export const ChatListItem: React.FC<ChatListItemProps> = ({
@@ -18,6 +20,7 @@ export const ChatListItem: React.FC<ChatListItemProps> = ({
   isActive = false,
   isUnread = false,
   isBold = false,
+  isVerified = false, // Default to false
 }) => {
   // Get initials from name for avatar fallback
   const getInitials = (name: string) => {
@@ -42,12 +45,21 @@ export const ChatListItem: React.FC<ChatListItemProps> = ({
           <div
             className={`self-stretch flex items-center gap-3 text-sm text-[#242424] ${
               isBold ? "font-bold" : ""
-            } leading-5 flex-1 shrink basis-[0%] my-auto`}
+            } leading-5 flex-1 shrink basis-[0%] my-auto relative`}
           >
-            <Avatar className="w-5 h-5">
-              <AvatarImage src={avatar} alt={name} />
-              <AvatarFallback className="text-xs">{getInitials(name)}</AvatarFallback>
-            </Avatar>
+            <div className="relative">
+              <Avatar className="w-5 h-5">
+                <AvatarImage src={avatar} alt={name} />
+                <AvatarFallback className="text-xs">{getInitials(name)}</AvatarFallback>
+              </Avatar>
+              {isVerified && (
+                <CheckCircle2 
+                  className="absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2 w-3 h-3 text-green-500" 
+                  fill="white" 
+                  strokeWidth={2} 
+                />
+              )}
+            </div>
             <div className="self-stretch flex-1 shrink basis-[0%] my-auto text-ellipsis overflow-hidden whitespace-nowrap">
               {name}
             </div>
