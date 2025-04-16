@@ -3,7 +3,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, Clock, MessageSquare, CheckCircle, AlertCircle, UserCircle } from "lucide-react";
+import { Calendar, Clock, MessageSquare, CheckCircle, AlertCircle } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
 interface ConversationSummaryProps {
@@ -137,10 +137,7 @@ export const ConversationSummary: React.FC<ConversationSummaryProps> = ({ onEven
                         className="flex items-center justify-between rounded-md p-2 hover:bg-gray-50 cursor-pointer"
                         onClick={() => handleEventClick(decision.messageId)}
                       >
-                        <div className="flex items-center gap-2">
-                          <UserCircle className="h-4 w-4 text-gray-500" />
-                          <span className="text-sm">{decision.text}</span>
-                        </div>
+                        <span className="text-sm">{decision.text}</span>
                         <Badge className={getStatusColor(decision.status)}>
                           {decision.status}
                         </Badge>
