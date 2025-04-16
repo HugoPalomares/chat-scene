@@ -6,7 +6,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 
 export const ChatContent: React.FC = () => {
   return (
-    <ScrollArea className="flex-1 overflow-y-auto">
+    <ScrollArea className="flex-1 overflow-y-auto h-full">
       <div className="flex w-full flex-col px-[72px] py-10 max-md:px-5">
         <ChatMessage
           sender="Access review Agent"
@@ -21,6 +21,11 @@ export const ChatContent: React.FC = () => {
               <AccessReviewCard />
             </>
           }
+        />
+        <ChatMessage
+          isUser={true}
+          timestamp="5/12, 9:16 AM"
+          content="That should be fine, but can you quickly let me know who these 80 users are so I can take a look at them?"
         />
         <ChatMessage
           sender="Access review Agent"
