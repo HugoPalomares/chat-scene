@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Avatar, AvatarImage, AvatarFallback } from "../ui/avatar";
 import { CheckCircle2 } from "lucide-react";
@@ -51,15 +50,6 @@ export const ChatListItem: React.FC<ChatListItemProps> = ({
                 <AvatarImage src={avatar} alt={name} />
                 <AvatarFallback className="text-xs">{getInitials(name)}</AvatarFallback>
               </Avatar>
-              {isVerified && (
-                <div className="absolute bottom-0 right-0 translate-x-1/3 translate-y-1/3 rounded-full bg-white p-0.5">
-                  <CheckCircle2 
-                    className="w-2.5 h-2.5 text-green-500" 
-                    fill="white" 
-                    strokeWidth={2} 
-                  />
-                </div>
-              )}
             </div>
             <div className="self-stretch flex-1 shrink basis-[0%] my-auto text-ellipsis overflow-hidden whitespace-nowrap">
               {name}
