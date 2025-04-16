@@ -6,37 +6,41 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, Clock, MessageSquare, CheckCircle, AlertCircle, UserCircle } from "lucide-react";
 
-export const ConversationSummary: React.FC = () => {
+interface ConversationSummaryProps {
+  onEventClick?: (messageId: string) => void;
+}
+
+export const ConversationSummary: React.FC<ConversationSummaryProps> = ({ onEventClick }) => {
   // This would typically come from a real data source
   const summaryData = {
     timeline: [
       { date: "May 12", events: [
-        { time: "9:15 AM", text: "Agent started Salesforce access review", type: "start" },
-        { time: "9:15 AM", text: "Reviewed 80 Controller users in Finance", type: "review" },
-        { time: "9:16 AM", text: "User approved retention for 80 Controller users", type: "decision" },
-        { time: "9:18 AM", text: "Discussed 10 Marketing department users", type: "review" },
-        { time: "9:20 AM", text: "User requested to check with John", type: "action" },
-        { time: "9:21 AM", text: "Agent agreed to contact John", type: "response" },
-        { time: "9:22 AM", text: "Discussed 9 Accounting Clerks", type: "review" },
-        { time: "9:23 AM", text: "User requested justification details", type: "question" },
-        { time: "9:24 AM", text: "Agent provided 'Project Amadeus' justification", type: "info" },
-        { time: "9:26 AM", text: "User confirmed project cancelled, approved revocation", type: "decision" },
-        { time: "9:27 AM", text: "Agent confirmed revoking access for 9 users", type: "action" },
-        { time: "9:28 AM", text: "Discussed Julia's access after department transfer", type: "review" },
-        { time: "9:28 AM", text: "User approved removing Julia's access", type: "decision" },
-        { time: "9:29 AM", text: "Agent confirmed completing review except pending items", type: "conclusion" },
+        { time: "9:15 AM", text: "Agent started Salesforce access review", type: "start", messageId: "msg-1" },
+        { time: "9:15 AM", text: "Reviewed 80 Controller users in Finance", type: "review", messageId: "msg-2" },
+        { time: "9:16 AM", text: "User approved retention for 80 Controller users", type: "decision", messageId: "msg-3" },
+        { time: "9:18 AM", text: "Discussed 10 Marketing department users", type: "review", messageId: "msg-4" },
+        { time: "9:20 AM", text: "User requested to check with John", type: "action", messageId: "msg-5" },
+        { time: "9:21 AM", text: "Agent agreed to contact John", type: "response", messageId: "msg-6" },
+        { time: "9:22 AM", text: "Discussed 9 Accounting Clerks", type: "review", messageId: "msg-7" },
+        { time: "9:23 AM", text: "User requested justification details", type: "question", messageId: "msg-8" },
+        { time: "9:24 AM", text: "Agent provided 'Project Amadeus' justification", type: "info", messageId: "msg-9" },
+        { time: "9:26 AM", text: "User confirmed project cancelled, approved revocation", type: "decision", messageId: "msg-10" },
+        { time: "9:27 AM", text: "Agent confirmed revoking access for 9 users", type: "action", messageId: "msg-11" },
+        { time: "9:28 AM", text: "Discussed Julia's access after department transfer", type: "review", messageId: "msg-12" },
+        { time: "9:28 AM", text: "User approved removing Julia's access", type: "decision", messageId: "msg-13" },
+        { time: "9:29 AM", text: "Agent confirmed completing review except pending items", type: "conclusion", messageId: "msg-14" },
       ]},
       { date: "May 14", events: [
-        { time: "10:45 AM", text: "Agent provided update about Marketing users", type: "update" },
-        { time: "10:45 AM", text: "Confirmed revocation for Marketing users", type: "conclusion" },
-        { time: "10:45 AM", text: "Review completed", type: "complete" },
+        { time: "10:45 AM", text: "Agent provided update about Marketing users", type: "update", messageId: "msg-15" },
+        { time: "10:45 AM", text: "Confirmed revocation for Marketing users", type: "conclusion", messageId: "msg-15" },
+        { time: "10:45 AM", text: "Review completed", type: "complete", messageId: "msg-15" },
       ]}
     ],
     decisions: [
-      { text: "Retained access for 80 Controller users in Finance", status: "approved" },
-      { text: "Revoked access for 9 Accounting Clerks (Project Amadeus cancelled)", status: "revoked" },
-      { text: "Revoked access for Julia after department transfer", status: "revoked" },
-      { text: "Revoked access for 10 Marketing users (confirmed with John)", status: "revoked" },
+      { text: "Retained access for 80 Controller users in Finance", status: "approved", messageId: "msg-3" },
+      { text: "Revoked access for 9 Accounting Clerks (Project Amadeus cancelled)", status: "revoked", messageId: "msg-10" },
+      { text: "Revoked access for Julia after department transfer", status: "revoked", messageId: "msg-13" },
+      { text: "Revoked access for 10 Marketing users (confirmed with John)", status: "revoked", messageId: "msg-15" },
     ],
     pendingActions: []
   };
@@ -63,6 +67,12 @@ export const ConversationSummary: React.FC = () => {
     return status === "approved" ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800";
   };
 
+  const handleEventClick = (messageId: string) => {
+    if (onEventClick) {
+      onEventClick(messageId);
+    }
+  };
+
   return (
     <div className="h-full overflow-hidden flex flex-col">
       <Tabs defaultValue="timeline" className="w-full">
@@ -81,7 +91,11 @@ export const ConversationSummary: React.FC = () => {
               
               <div className="space-y-2">
                 {day.events.map((event, eventIndex) => (
-                  <Card key={eventIndex} className="border-l-4 border-l-purple-200 hover:bg-gray-50 cursor-pointer transition-colors">
+                  <Card 
+                    key={eventIndex} 
+                    className="border-l-4 border-l-purple-200 hover:bg-gray-50 cursor-pointer transition-colors"
+                    onClick={() => handleEventClick(event.messageId)}
+                  >
                     <CardContent className="p-3">
                       <div className="flex items-start gap-2">
                         <div className="mt-0.5">
@@ -115,7 +129,11 @@ export const ConversationSummary: React.FC = () => {
               <AccordionContent>
                 <div className="space-y-2 py-1">
                   {summaryData.decisions.map((decision, index) => (
-                    <div key={index} className="flex items-center justify-between rounded-md p-2 hover:bg-gray-50">
+                    <div 
+                      key={index} 
+                      className="flex items-center justify-between rounded-md p-2 hover:bg-gray-50 cursor-pointer"
+                      onClick={() => handleEventClick(decision.messageId)}
+                    >
                       <div className="flex items-center gap-2">
                         <UserCircle className="h-4 w-4 text-gray-500" />
                         <span className="text-sm">{decision.text}</span>

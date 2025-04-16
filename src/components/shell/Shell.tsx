@@ -46,7 +46,7 @@ export const Shell: React.FC = () => {
                     </button>
                   </div>
                   <div className="p-4 flex-1 overflow-auto">
-                    <ConversationSummary onEventClick={(messageId) => setHighlightedMessage(messageId)} />
+                    <ConversationSummary onEventClick={setHighlightedMessage} />
                   </div>
                 </div>
               )}
