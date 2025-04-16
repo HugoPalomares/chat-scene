@@ -8,7 +8,7 @@ export const AccessReviewCard: React.FC = () => {
           <div className="text-[#242424] text-ellipsis text-base font-semibold leading-none">
             Quarterly SOX Compliance
           </div>
-          <div className="flex w-full items-center gap-1 text-xs text-[#616161] font-normal leading-none">
+          <div className="flex w-full items-center gap-1 text-xs text-[#616161] font-normal leading-none mt-1.5">
             <div className="text-ellipsis self-stretch flex-1 shrink basis-[0%] min-w-60 w-full gap-2 my-auto">
               Due in 2 weeks
             </div>
