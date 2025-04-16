@@ -1,3 +1,4 @@
+
 import React from "react";
 
 export const AccessReviewCard: React.FC = () => {
@@ -50,7 +51,7 @@ export const AccessReviewCard: React.FC = () => {
             Completion
           </div>
           <div className="text-[rgba(36,36,36,1)] text-sm font-semibold leading-none text-right self-stretch flex-1 shrink basis-[0%] my-auto">
-            3 out of 12 (25%)
+            80 out of 100 (80%)
           </div>
         </div>
         <div className="flex w-full items-center gap-2.5 justify-center mt-2.5 px-3">
@@ -70,7 +71,7 @@ export const AccessReviewCard: React.FC = () => {
             alt="Warning"
           />
           <div className="self-stretch min-w-60 gap-1 flex-1 shrink basis-[0%] my-auto py-2.5">
-            9 access permissions need review
+            20 access permissions need review
           </div>
         </div>
       </div>
