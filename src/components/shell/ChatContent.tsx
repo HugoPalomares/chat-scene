@@ -14,52 +14,6 @@ export interface MessageInfo {
   type?: string; // Maps to event types in the timeline
 }
 
-// John conversation data
-const johnConversationData: MessageInfo[] = [
-  {
-    id: "john-msg-1",
-    sender: "Access review Agent",
-    timestamp: "5/12, 10:00 AM",
-    avatar: "https://cdn.builder.io/api/v1/image/assets/7114281f625a4fe383a60299d1987d6e/bbf4c6d64799b006bfa3862b2510c8308095337e?placeholderIfAbsent=true",
-    content: "I'm reaching out regarding the 10 users from the Marketing department who have Salesforce access. Their access was assigned outside the standard approval process, and they're showing no recent activity. Will mentioned you might have more context about this.",
-  },
-  {
-    id: "john-msg-2",
-    sender: "John Smith",
-    timestamp: "5/12, 10:15 AM",
-    avatar: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952",
-    content: "Thanks for checking. Those users were granted access for the Q1 marketing campaign that ended last month. They no longer need this access as the project is complete.",
-  },
-  {
-    id: "john-msg-3",
-    sender: "Access review Agent",
-    timestamp: "5/12, 10:17 AM",
-    avatar: "https://cdn.builder.io/api/v1/image/assets/7114281f625a4fe383a60299d1987d6e/bbf4c6d64799b006bfa3862b2510c8308095337e?placeholderIfAbsent=true",
-    content: "Perfect, I'll note that these users no longer require access due to project completion. Would you like me to go ahead and revoke their access?",
-  },
-  {
-    id: "john-msg-4",
-    sender: "John Smith",
-    timestamp: "5/12, 10:20 AM",
-    avatar: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952",
-    content: "Yes, please go ahead and revoke their access. If they need it again for future campaigns, we'll request it through the proper channels.",
-  },
-  {
-    id: "john-msg-5",
-    sender: "Access review Agent",
-    timestamp: "5/12, 10:22 AM",
-    avatar: "https://cdn.builder.io/api/v1/image/assets/7114281f625a4fe383a60299d1987d6e/bbf4c6d64799b006bfa3862b2510c8308095337e?placeholderIfAbsent=true",
-    content: "Great! I'll revoke access for those 10 Marketing users and update our records accordingly. I'll also let Will know about your confirmation. Thanks for your quick response.",
-  },
-  {
-    id: "john-msg-6",
-    sender: "John Smith",
-    timestamp: "5/12, 10:25 AM",
-    avatar: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952",
-    content: "You're welcome. Feel free to reach out if you need any additional information.",
-  },
-];
-
 // This would typically come from a data source or context
 export const messageData: MessageInfo[] = [
   {
@@ -185,18 +139,6 @@ interface ChatContentProps {
 
 export const ChatContent: React.FC<ChatContentProps> = ({ highlightedMessageId }) => {
   const [currentHighlighted, setCurrentHighlighted] = useState<string | undefined>(highlightedMessageId);
-  const [showJohnConversation, setShowJohnConversation] = useState(false);
-  
-  // Check if we should show John's conversation
-  useEffect(() => {
-    const pathParts = window.location.pathname.split('/');
-    setShowJohnConversation(pathParts.includes('john-chat') || localStorage.getItem('show-john-chat') === 'true');
-    
-    if (highlightedMessageId?.startsWith('john-msg')) {
-      setShowJohnConversation(true);
-      localStorage.setItem('show-john-chat', 'true');
-    }
-  }, [highlightedMessageId]);
   
   useEffect(() => {
     if (highlightedMessageId) {
@@ -216,18 +158,15 @@ export const ChatContent: React.FC<ChatContentProps> = ({ highlightedMessageId }
     }
   }, [highlightedMessageId]);
 
-  // Determine which messages to display
-  const displayMessages = showJohnConversation ? johnConversationData : messageData;
-
   return (
     <ScrollArea className="flex-1 overflow-y-auto h-full">
       <div className="flex w-full flex-col px-[72px] py-10 max-md:px-5">
-        {displayMessages.map((message, index) => (
+        {messageData.map((message, index) => (
           <ChatMessage
             key={message.id}
             sender={message.sender}
             timestamp={message.timestamp}
-            content={!showJohnConversation && index === 0 ? (
+            content={index === 0 ? (
               <>
                 {message.content}
                 <br /><br />
