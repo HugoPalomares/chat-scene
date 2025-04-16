@@ -1,3 +1,4 @@
+
 import React from "react";
 
 export const AccessReviewCard: React.FC = () => {
@@ -6,11 +7,11 @@ export const AccessReviewCard: React.FC = () => {
       <div className="flex min-w-[180px] w-full items-center gap-2.5 px-3">
         <div className="self-stretch min-w-60 flex-1 shrink basis-[0%] my-auto">
           <div className="text-[#242424] text-ellipsis text-base font-semibold leading-none">
-            Quarterly SOX Compliance
+            Quarterly Enterprise Access Review
           </div>
           <div className="flex w-full items-center gap-1 text-xs text-[#616161] font-normal leading-none mt-1.5">
             <div className="text-ellipsis self-stretch flex-1 shrink basis-[0%] min-w-60 w-full gap-2 my-auto">
-              Due in 2 weeks
+              Due in 3 days
             </div>
           </div>
         </div>
@@ -33,7 +34,7 @@ export const AccessReviewCard: React.FC = () => {
           </div>
           <div className="bg-[rgba(235,235,235,1)] self-stretch flex min-w-5 min-h-5 items-center overflow-hidden text-[10px] text-[#616161] font-semibold text-center leading-[14px] justify-center my-auto px-1 rounded-full">
             <div className="self-stretch h-3.5 my-auto pb-px px-0.5">
-              In progress
+              Pending Review
             </div>
           </div>
         </div>
@@ -42,7 +43,7 @@ export const AccessReviewCard: React.FC = () => {
             Created by
           </div>
           <div className="text-[rgba(36,36,36,1)] text-sm font-semibold leading-none text-right self-stretch flex-1 shrink basis-[0%] my-auto">
-            James Wilson
+            Emily Rodriguez
           </div>
         </div>
         <div className="flex w-full items-center gap-2.5 justify-center mt-2.5 px-3">
@@ -50,7 +51,7 @@ export const AccessReviewCard: React.FC = () => {
             Completion
           </div>
           <div className="text-[rgba(36,36,36,1)] text-sm font-semibold leading-none text-right self-stretch flex-1 shrink basis-[0%] my-auto">
-            6 out of 10 (60%)
+            3 out of 12 (25%)
           </div>
         </div>
         <div className="flex w-full items-center gap-2.5 justify-center mt-2.5 px-3">
@@ -58,7 +59,7 @@ export const AccessReviewCard: React.FC = () => {
             Estimated time
           </div>
           <div className="text-[rgba(36,36,36,1)] text-sm font-semibold leading-none text-right self-stretch flex-1 shrink basis-[0%] my-auto">
-            2 minutes
+            45 minutes
           </div>
         </div>
       </div>
@@ -70,7 +71,7 @@ export const AccessReviewCard: React.FC = () => {
             alt="Warning"
           />
           <div className="self-stretch min-w-60 gap-1 flex-1 shrink basis-[0%] my-auto py-2.5">
-            4 assignments still need review
+            9 access permissions need review
           </div>
         </div>
       </div>
@@ -82,7 +83,7 @@ export const AccessReviewCard: React.FC = () => {
             alt="Finish"
           />
           <div className="self-stretch flex min-h-5 items-center gap-1 justify-center my-auto">
-            <div className="self-stretch my-auto">Finish review</div>
+            <div className="self-stretch my-auto">Start review</div>
           </div>
         </div>
       </div>
