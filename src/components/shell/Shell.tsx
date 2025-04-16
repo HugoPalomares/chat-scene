@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { TitleBar } from "./TitleBar";
 import { AppBar } from "./AppBar";
@@ -7,13 +8,29 @@ import { ChatContent } from "./ChatContent";
 import { ChatCompose } from "./ChatCompose";
 import { X } from "lucide-react";
 import { ConversationSummary } from "./ConversationSummary";
+import { ChatListItem } from "./ChatListItem";
+
+// Sample data for John's chat
+const johnChatData = {
+  id: "john-chat",
+  avatar: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952",
+  name: "John Smith",
+  timestamp: "5/12, 10:30 AM",
+  isUnread: true,
+  isBold: true,
+};
 
 export const Shell: React.FC = () => {
   const [rightSideVisible, setRightSideVisible] = useState(true);
   const [highlightedMessage, setHighlightedMessage] = useState<string | undefined>(undefined);
-
+  const [showJohnChat, setShowJohnChat] = useState(false);
+  
   const toggleRightSide = () => {
     setRightSideVisible(prev => !prev);
+  };
+  
+  const handleOpenJohnChat = () => {
+    setShowJohnChat(true);
   };
 
   return (
@@ -21,7 +38,22 @@ export const Shell: React.FC = () => {
       <TitleBar />
       <div className="flex w-full items-stretch flex-1 h-[calc(100%-48px)] max-md:max-w-full">
         <AppBar />
-        <LeftRail />
+        <div className="bg-[#fafafa] w-60 flex-col flex border-r border-[rgba(0,0,0,0.05)]">
+          {/* Insert John's chat at the top */}
+          {showJohnChat && (
+            <div className="pt-1">
+              <ChatListItem
+                avatar={johnChatData.avatar}
+                name={johnChatData.name}
+                timestamp={johnChatData.timestamp}
+                isActive={false}
+                isUnread={johnChatData.isUnread}
+                isBold={johnChatData.isBold}
+              />
+            </div>
+          )}
+          <LeftRail />
+        </div>
         <div className="min-w-60 flex-1 shrink basis-[0%] flex flex-col max-md:max-w-full">
           <ChatHeader onToggleRightSide={toggleRightSide} rightSideVisible={rightSideVisible} />
           <div className="bg-white w-full flex-1 flex flex-col max-md:max-w-full relative overflow-hidden border-t border-[rgba(0,0,0,0.05)]">
@@ -45,7 +77,10 @@ export const Shell: React.FC = () => {
                     </button>
                   </div>
                   <div className="p-4 flex-1 overflow-auto">
-                    <ConversationSummary onEventClick={setHighlightedMessage} />
+                    <ConversationSummary 
+                      onEventClick={setHighlightedMessage} 
+                      onOpenJohnChat={handleOpenJohnChat}
+                    />
                   </div>
                 </div>
               )}

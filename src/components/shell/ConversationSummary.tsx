@@ -4,15 +4,18 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, Clock, MessageSquare, CheckCircle, AlertCircle, TrendingUp, ChevronDown, ChevronUp } from "lucide-react";
+import { Calendar, Clock, MessageSquare, CheckCircle, AlertCircle, TrendingUp, ChevronDown, ChevronUp, User } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { Avatar, AvatarImage, AvatarFallback } from "../ui/avatar";
+import { Button } from "../ui/button";
 
 interface ConversationSummaryProps {
   onEventClick?: (messageId: string) => void;
+  onOpenJohnChat?: () => void;
 }
 
-export const ConversationSummary: React.FC<ConversationSummaryProps> = ({ onEventClick }) => {
+export const ConversationSummary: React.FC<ConversationSummaryProps> = ({ onEventClick, onOpenJohnChat }) => {
   const summaryData = {
     timeline: [
       { date: "May 12", events: [
@@ -20,7 +23,11 @@ export const ConversationSummary: React.FC<ConversationSummaryProps> = ({ onEven
         { time: "9:15 AM", text: "Reviewed 80 Controller users in Finance", type: "review", messageId: "msg-2" },
         { time: "9:16 AM", text: "User approved retention for 80 Controller users", type: "decision", messageId: "msg-3" },
         { time: "9:18 AM", text: "Discussed 10 Marketing department users", type: "review", messageId: "msg-4" },
-        { time: "9:20 AM", text: "User requested to check with John", type: "action", messageId: "msg-5" },
+        { time: "9:20 AM", text: "User requested to check with John", type: "action", messageId: "msg-5", 
+          hasProfile: true,
+          profilePic: "https://images.unsplash.com/photo-1581092795360-fd1ca04f0952",
+          profileName: "John Smith"
+        },
         { time: "9:21 AM", text: "Agent agreed to contact John", type: "response", messageId: "msg-6" },
         { time: "9:22 AM", text: "Discussed 9 Accounting Clerks", type: "review", messageId: "msg-7" },
         { time: "9:23 AM", text: "User requested justification details", type: "question", messageId: "msg-8" },
@@ -169,6 +176,28 @@ export const ConversationSummary: React.FC<ConversationSummaryProps> = ({ onEven
                                 <span className="text-xs text-gray-500">{event.time}</span>
                               </div>
                             </div>
+                            
+                            {/* Show profile picture and chat button for events mentioning John */}
+                            {event.hasProfile && (
+                              <div className="flex items-center gap-2">
+                                <Avatar className="w-6 h-6">
+                                  <AvatarImage src={event.profilePic} alt={event.profileName} />
+                                  <AvatarFallback>{event.profileName.charAt(0)}</AvatarFallback>
+                                </Avatar>
+                                <Button 
+                                  variant="ghost" 
+                                  size="sm" 
+                                  className="h-7 px-2 text-xs"
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    if (onOpenJohnChat) onOpenJohnChat();
+                                  }}
+                                >
+                                  <MessageSquare className="h-3 w-3 mr-1" />
+                                  Chat
+                                </Button>
+                              </div>
+                            )}
                           </div>
                         </CardContent>
                       </Card>
