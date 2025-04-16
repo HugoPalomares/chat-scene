@@ -144,10 +144,10 @@ export const ChatContent: React.FC<ChatContentProps> = ({ highlightedMessageId }
     if (highlightedMessageId) {
       setCurrentHighlighted(highlightedMessageId);
       
-      // Clear highlight effect after 2 seconds (two pulse cycles)
+      // Clear highlight effect after 500ms
       const timer = setTimeout(() => {
         setCurrentHighlighted(undefined);
-      }, 2000);
+      }, 500);
       
       return () => clearTimeout(timer);
     }

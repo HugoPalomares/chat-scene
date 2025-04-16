@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -73,6 +74,7 @@ export const ConversationSummary: React.FC<ConversationSummaryProps> = ({ onEven
 
   return (
     <div className="h-full overflow-hidden flex flex-col">
+      <div className="text-[14px] font-medium mb-2">Conversation Summary</div>
       <Tabs defaultValue="timeline" className="w-full">
         <TabsList className="grid w-full grid-cols-2">
           <TabsTrigger value="timeline">Timeline</TabsTrigger>

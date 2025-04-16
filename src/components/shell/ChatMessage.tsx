@@ -38,16 +38,15 @@ export const ChatMessage = forwardRef<HTMLDivElement, ChatMessageProps>(({
         id={messageId}
         ref={ref || messageRef}
         className={cn(
-          "rounded flex w-full max-w-[1052px] justify-end ml-auto gap-1.5 max-md:max-w-full mb-4",
-          isHighlighted && "animate-pulse"
+          "rounded flex w-full max-w-[1052px] justify-end ml-auto gap-1.5 max-md:max-w-full mb-4"
         )}
       >
         <div className="flex flex-col items-end">
           <div className="text-[#616161] text-xs leading-4 mr-4 mb-1">{timestamp}</div>
           <div className="text-sm text-[#242424] leading-5">
             <div className={cn(
-              "bg-[rgba(232,235,250,1)] inline-block px-4 py-2 rounded-md transition-colors duration-300",
-              isHighlighted && "bg-[rgba(207,211,242,1)] animate-[pulse_0.7s_ease-in-out_2]"
+              "bg-[rgba(232,235,250,1)] inline-block px-4 py-2 rounded-md",
+              isHighlighted && "animate-pulse-nudge bg-[rgba(182,189,231,1)]"
             )}>
               <div className="text-right">
                 {content}
@@ -64,8 +63,7 @@ export const ChatMessage = forwardRef<HTMLDivElement, ChatMessageProps>(({
       id={messageId}
       ref={ref || messageRef}
       className={cn(
-        "rounded flex w-full max-w-[1052px] gap-1.5 max-md:max-w-full mb-4",
-        isHighlighted && "animate-pulse"
+        "rounded flex w-full max-w-[1052px] gap-1.5 max-md:max-w-full mb-4"
       )}
     >
       <div className="min-w-60 w-full flex-1 shrink basis-[0%] max-md:max-w-full">
@@ -89,8 +87,8 @@ export const ChatMessage = forwardRef<HTMLDivElement, ChatMessageProps>(({
               <div>{timestamp}</div>
             </div>
             <div className={cn(
-              "bg-neutral-100 w-full mt-[7px] pb-5 px-4 pt-5 rounded-md max-md:max-w-full transition-colors duration-300",
-              isHighlighted && "bg-neutral-200 animate-[pulse_0.7s_ease-in-out_2]"
+              "bg-neutral-100 w-full mt-[7px] pb-5 px-4 pt-5 rounded-md max-md:max-w-full",
+              isHighlighted && "animate-pulse-nudge bg-neutral-300"
             )}>
               <div className="flex w-full flex-col items-stretch max-md:max-w-full">
                 <div className="w-full max-md:max-w-full">

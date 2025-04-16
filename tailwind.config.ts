@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -86,19 +85,19 @@ export default {
 						height: '0'
 					}
 				},
-				'pulse': {
+				'pulse-nudge': {
 					'0%, 100%': { 
-						backgroundColor: 'inherit'
+						opacity: '1'
 					},
 					'50%': { 
-						backgroundColor: 'var(--highlight-color, rgb(209, 213, 219))'
+						opacity: '0.7'
 					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
-				'pulse': 'pulse 0.75s ease-in-out'
+				'pulse-nudge': 'pulse-nudge 0.5s ease-in-out'
 			}
 		}
 	},
