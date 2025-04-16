@@ -1,13 +1,16 @@
+
 import React, { useState } from "react";
+import { useChatSimulation } from "@/context/ChatSimulationContext";
 
 export const ChatCompose: React.FC = () => {
   const [message, setMessage] = useState("");
+  const { addUserMessage } = useChatSimulation();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (message.trim()) {
-      // Handle message submission
-      console.log("Message submitted:", message);
+      // Send the message to the chat simulation context
+      addUserMessage(message.trim());
       setMessage("");
     }
   };

@@ -1,3 +1,4 @@
+
 import React from "react";
 
 export const AccessReviewCard: React.FC = () => {
@@ -6,11 +7,11 @@ export const AccessReviewCard: React.FC = () => {
       <div className="flex min-w-[180px] w-full items-center gap-2.5 px-3">
         <div className="self-stretch min-w-60 flex-1 shrink basis-[0%] my-auto">
           <div className="text-[#242424] text-ellipsis text-base font-semibold leading-none">
-            Quarterly SOX Compliance
+            Salesforce Access Review
           </div>
           <div className="flex w-full items-center gap-1 text-xs text-[#616161] font-normal leading-none mt-1.5">
             <div className="text-ellipsis self-stretch flex-1 shrink basis-[0%] min-w-60 w-full gap-2 my-auto">
-              Due in 2 weeks
+              Due in 1 week
             </div>
           </div>
         </div>
@@ -42,7 +43,7 @@ export const AccessReviewCard: React.FC = () => {
             Created by
           </div>
           <div className="text-[rgba(36,36,36,1)] text-sm font-semibold leading-none text-right self-stretch flex-1 shrink basis-[0%] my-auto">
-            James Wilson
+            System
           </div>
         </div>
         <div className="flex w-full items-center gap-2.5 justify-center mt-2.5 px-3">
@@ -50,7 +51,7 @@ export const AccessReviewCard: React.FC = () => {
             Completion
           </div>
           <div className="text-[rgba(36,36,36,1)] text-sm font-semibold leading-none text-right self-stretch flex-1 shrink basis-[0%] my-auto">
-            6 out of 10 (60%)
+            80 out of 100 (80%)
           </div>
         </div>
         <div className="flex w-full items-center gap-2.5 justify-center mt-2.5 px-3">
@@ -58,7 +59,7 @@ export const AccessReviewCard: React.FC = () => {
             Estimated time
           </div>
           <div className="text-[rgba(36,36,36,1)] text-sm font-semibold leading-none text-right self-stretch flex-1 shrink basis-[0%] my-auto">
-            2 minutes
+            3 minutes
           </div>
         </div>
       </div>
@@ -70,7 +71,7 @@ export const AccessReviewCard: React.FC = () => {
             alt="Warning"
           />
           <div className="self-stretch min-w-60 gap-1 flex-1 shrink basis-[0%] my-auto py-2.5">
-            4 assignments still need review
+            20 users still need review
           </div>
         </div>
       </div>
