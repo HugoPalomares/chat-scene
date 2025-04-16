@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Avatar, AvatarImage, AvatarFallback } from "../ui/avatar";
 import { CheckCircle2 } from "lucide-react";
@@ -52,7 +53,7 @@ export const ChatListItem: React.FC<ChatListItemProps> = ({
               </Avatar>
               {isVerified && (
                 <CheckCircle2 
-                  className="absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2 w-3 h-3 text-green-500 z-10" 
+                  className="absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2 w-3 h-3 text-green-500 z-20" 
                   fill="white" 
                   strokeWidth={2} 
                 />
