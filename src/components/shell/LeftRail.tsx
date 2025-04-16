@@ -40,7 +40,7 @@ export const LeftRail: React.FC = () => {
 
         <ChatListSection title="Chats" className="mt-1">
           <ChatListItem
-            avatar="https://images.unsplash.com/photo-1581226892492-f03d5b4bc5a0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDR8fHxlbnwwfHx8fHw%3D"
+            avatar="https://cdn.builder.io/api/v1/image/assets/7114281f625a4fe383a60299d1987d6e/b91514dda4d7ab18b508781d2a3056f629591c3c?placeholderIfAbsent=true"
             name="Access Reviews Agent"
             timestamp="11:32 AM"
             isActive={true}
@@ -58,7 +58,7 @@ export const LeftRail: React.FC = () => {
             timestamp="11:32 AM"
           />
           <ChatListItem
-            avatar="https://images.unsplash.com/photo-1612353413834-e1a391f79a4f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE1fHx8ZW58MHx8fHx8"
+            avatar="https://images.unsplash.com/photo-1501286353178-1ec881214838?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzJ8fHByb2ZpbGV8ZW58MHx8MHx8fDA%3D"
             name="Oscar Krogh"
             timestamp="11:02 AM"
           />

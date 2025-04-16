@@ -34,7 +34,7 @@ export const AccessReviewCard: React.FC = () => {
           </div>
           <div className="bg-[rgba(235,235,235,1)] self-stretch flex min-w-5 min-h-5 items-center overflow-hidden text-[10px] text-[#616161] font-semibold text-center leading-[14px] justify-center my-auto px-1 rounded-full">
             <div className="self-stretch h-3.5 my-auto pb-px px-0.5">
-              Pending Review
+              In Progress
             </div>
           </div>
         </div>
