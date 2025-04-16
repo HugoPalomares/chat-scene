@@ -14,18 +14,16 @@ export const ChatContent: React.FC = () => {
           avatar="https://cdn.builder.io/api/v1/image/assets/7114281f625a4fe383a60299d1987d6e/bbf4c6d64799b006bfa3862b2510c8308095337e?placeholderIfAbsent=true"
           content={
             <>
-              Hi Will, there's an access review for Salesforce that needs your immediate attention. I've already completed 80% to save you time, but I still need your help with a few final decisions. First, for the 80% I've processed: these 80 users are all controllers from the finance department who are actively using their 'Analytics Cloud' role, which you had previously approved. Are you okay with them retaining their access?
-              <br />
-              <br />
-              Let's tackle the rest together—it should only take a couple of minutes.
-              <AccessReviewCard />
+              Hi Will, I need your input on the current Salesforce access review. To help expedite the process, I've already reviewed about 80% of the users, but I need your decisions on the remaining cases.
+              <br /><br />
+              Let's start with the group I've already reviewed: There are 80 users, all Controllers in the Finance department. They are actively using their 'Analytics Cloud' role, which you previously approved. Based on this, my recommendation is to retain their access. Do you agree?
             </>
           }
         />
         <ChatMessage
           isUser={true}
           timestamp="5/12, 9:16 AM"
-          content="That should be fine, but can you quickly let me know who these 80 users are so I can take a look at them?"
+          content="Yes, that sounds correct. Please retain their access."
         />
         <ChatMessage
           sender="Access review Agent"
@@ -33,51 +31,69 @@ export const ChatContent: React.FC = () => {
           avatar="https://cdn.builder.io/api/v1/image/assets/7114281f625a4fe383a60299d1987d6e/bbf4c6d64799b006bfa3862b2510c8308095337e?placeholderIfAbsent=true"
           content={
             <>
-              Great, I'll make sure their access is retained. For the remaining 20 users, I need some guidance: I can see that 10 users were assigned access by John without going through the proper approval process. They're all from the marketing department and aren't even using their access. John didn't provide any business justification at the time. Should we maintain their access?
+              Great, I've marked those 80 users for retention. Now, regarding the remaining users requiring review:
+              <br /><br />
+              First, there are 10 users from the Marketing department. Records show their access was assigned by John, seemingly outside the standard approval process, and no business justification was documented. They currently show no active usage of this access. Should we keep their access enabled?
             </>
           }
         />
         <ChatMessage
           isUser={true}
           timestamp="5/12, 9:20 AM"
-          content="I'm not sure about these. Can you check with John?"
+          content="Hmm, I'm not sure about those. Could you please check with John to see if there's an ongoing need?"
         />
         <ChatMessage
           sender="Access review Agent"
           timestamp="5/12, 9:21 AM"
           avatar="https://cdn.builder.io/api/v1/image/assets/7114281f625a4fe383a60299d1987d6e/bbf4c6d64799b006bfa3862b2510c8308095337e?placeholderIfAbsent=true"
+          content="Certainly. I will contact John and let you know his feedback."
+        />
+        <ChatMessage
+          sender="Access review Agent"
+          timestamp="5/12, 9:22 AM"
+          avatar="https://cdn.builder.io/api/v1/image/assets/7114281f625a4fe383a60299d1987d6e/bbf4c6d64799b006bfa3862b2510c8308095337e?placeholderIfAbsent=true"
           content={
             <>
-              I'll check with John and get back to you. I also see 9 accounting clerks from the finance department who never use their access. In the history, I can see they requested access and you previously approved it. Should we maintain their access going forward?
+              Next, there are 9 Accounting Clerks within the Finance department who also haven't used their Salesforce access recently. Our records indicate they requested this access, and you approved it at the time. Should we maintain their access?
             </>
           }
         />
         <ChatMessage
           isUser={true}
           timestamp="5/12, 9:23 AM"
-          content="I don't fully recall these. Can you remind me when they requested access and if they provided a business justification?"
+          content="I don't recall the specifics offhand. Can you remind me when they requested it and what justification they provided?"
         />
         <ChatMessage
           sender="Access review Agent"
           timestamp="5/12, 9:24 AM"
           avatar="https://cdn.builder.io/api/v1/image/assets/7114281f625a4fe383a60299d1987d6e/bbf4c6d64799b006bfa3862b2510c8308095337e?placeholderIfAbsent=true"
-          content="They all requested access back in January and mentioned Project Amadeus as the reason."
+          content="They submitted their requests back in January, citing 'Project Amadeus' as the reason."
         />
         <ChatMessage
           isUser={true}
           timestamp="5/12, 9:26 AM"
-          content="Oh right, that project was cancelled. We can revoke their access."
+          content="Ah, right. That project was cancelled. We can revoke their access."
         />
         <ChatMessage
           sender="Access review Agent"
           timestamp="5/12, 9:27 AM"
           avatar="https://cdn.builder.io/api/v1/image/assets/7114281f625a4fe383a60299d1987d6e/bbf4c6d64799b006bfa3862b2510c8308095337e?placeholderIfAbsent=true"
-          content="Perfect. One last item: Julia still has access. She used to be in the finance department but recently moved to the customer success department. Do you think she still needs access?"
+          content="Understood, access for those 9 users will be revoked."
+        />
+        <ChatMessage
+          sender="Access review Agent"
+          timestamp="5/12, 9:28 AM"
+          avatar="https://cdn.builder.io/api/v1/image/assets/7114281f625a4fe383a60299d1987d6e/bbf4c6d64799b006bfa3862b2510c8308095337e?placeholderIfAbsent=true"
+          content={
+            <>
+              Lastly, there's Julia. She still has access assigned from when she was in Finance, but she recently transferred to the Customer Success department. Does she still require this specific Salesforce access in her new role?
+            </>
+          }
         />
         <ChatMessage
           isUser={true}
           timestamp="5/12, 9:28 AM"
-          content="Let's remove her access."
+          content="No, she doesn't need it anymore. Let's remove her access."
         />
         <ChatMessage
           sender="Access review Agent"
@@ -85,9 +101,7 @@ export const ChatContent: React.FC = () => {
           avatar="https://cdn.builder.io/api/v1/image/assets/7114281f625a4fe383a60299d1987d6e/bbf4c6d64799b006bfa3862b2510c8308095337e?placeholderIfAbsent=true"
           content={
             <>
-              Thank you, Will. That's all I needed for now. The auditors will be pleased with our decisions! 😉
-              <br /><br />
-              I'll let you know when I hear back from John, and then we can complete this review.
+              Okay, access for Julia will be removed. Thank you, Will. That's all the input I need from you at this moment. I will follow up regarding the 10 marketing users once I hear back from John, and then we can finalize this review cycle.
             </>
           }
         />
@@ -95,9 +109,10 @@ export const ChatContent: React.FC = () => {
           sender="Access review Agent"
           timestamp="5/14, 10:45 AM"
           avatar="https://cdn.builder.io/api/v1/image/assets/7114281f625a4fe383a60299d1987d6e/bbf4c6d64799b006bfa3862b2510c8308095337e?placeholderIfAbsent=true"
-          content="Hi Will, John got back to me and confirmed the marketing users no longer need access, so I've gone ahead and completed the review!"
+          content="Hi Will, quick update on the Salesforce access review. John confirmed that the 10 marketing users no longer require access. Based on his confirmation and your previous decisions, I have revoked their access and completed the review. All records have been updated."
         />
       </div>
     </ScrollArea>
   );
 };
+
