@@ -4,8 +4,10 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, Clock, MessageSquare, CheckCircle, AlertCircle, TrendingUp } from "lucide-react";
+import { Calendar, Clock, MessageSquare, CheckCircle, AlertCircle, TrendingUp, ChevronDown, ChevronUp } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { cn } from "@/lib/utils";
 
 interface ConversationSummaryProps {
   onEventClick?: (messageId: string) => void;
@@ -82,7 +84,7 @@ export const ConversationSummary: React.FC<ConversationSummaryProps> = ({ onEven
   return (
     <div className="h-full overflow-hidden flex flex-col">
       {/* Confidence Summary Section - Stock Market Style */}
-      <div className="mb-6 p-3 border border-[rgba(0,0,0,0.1)] rounded-md bg-white">
+      <div className="mb-10 p-3 border border-[rgba(0,0,0,0.1)] rounded-md bg-white">
         <div className="flex items-center justify-between mb-1">
           <h3 className="text-xs uppercase font-semibold text-gray-500">Agent Confidence</h3>
           <div className="flex items-center gap-1">
@@ -116,35 +118,40 @@ export const ConversationSummary: React.FC<ConversationSummaryProps> = ({ onEven
           <ScrollArea className="h-full pr-4">
             {summaryData.timeline.map((day, dayIndex) => (
               <div key={dayIndex} className="mb-4">
-                <div className="flex items-center gap-2 mb-2">
-                  <Calendar className="h-4 w-4 text-gray-500" />
-                  <h3 className="text-sm font-medium text-gray-700">{day.date}</h3>
-                </div>
-                
-                <div className="space-y-2">
-                  {day.events.map((event, eventIndex) => (
-                    <Card 
-                      key={eventIndex} 
-                      className="border-l-4 border-l-[#5B5FC7] hover:bg-gray-50 cursor-pointer transition-colors"
-                      onClick={() => handleEventClick(event.messageId)}
-                    >
-                      <CardContent className="p-3">
-                        <div className="flex items-start gap-2">
-                          <div className="mt-0.5">
-                            {getEventIcon(event.type)}
-                          </div>
-                          <div className="flex-1">
-                            <p className="text-sm">{event.text}</p>
-                            <div className="flex items-center gap-1 mt-1">
-                              <Clock className="h-3 w-3 text-gray-400" />
-                              <span className="text-xs text-gray-500">{event.time}</span>
+                <Collapsible defaultOpen className="w-full">
+                  <div className="flex items-center gap-2 mb-2">
+                    <CollapsibleTrigger className="flex items-center gap-2 hover:bg-gray-50 p-1 rounded-md w-full focus-visible:outline-none">
+                      <Calendar className="h-4 w-4 text-gray-500" />
+                      <h3 className="text-sm font-medium text-gray-700 flex-1">{day.date}</h3>
+                      <ChevronDown className="h-4 w-4 text-gray-400 transition-transform duration-200 collapsible-icon" />
+                    </CollapsibleTrigger>
+                  </div>
+                  
+                  <CollapsibleContent className="space-y-2">
+                    {day.events.map((event, eventIndex) => (
+                      <Card 
+                        key={eventIndex} 
+                        className="border-l-4 border-l-[#5B5FC7] hover:bg-gray-50 cursor-pointer transition-colors"
+                        onClick={() => handleEventClick(event.messageId)}
+                      >
+                        <CardContent className="p-3">
+                          <div className="flex items-start gap-2">
+                            <div className="mt-0.5">
+                              {getEventIcon(event.type)}
+                            </div>
+                            <div className="flex-1">
+                              <p className="text-sm">{event.text}</p>
+                              <div className="flex items-center gap-1 mt-1">
+                                <Clock className="h-3 w-3 text-gray-400" />
+                                <span className="text-xs text-gray-500">{event.time}</span>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
+                        </CardContent>
+                      </Card>
+                    ))}
+                  </CollapsibleContent>
+                </Collapsible>
               </div>
             ))}
           </ScrollArea>
@@ -183,3 +190,4 @@ export const ConversationSummary: React.FC<ConversationSummaryProps> = ({ onEven
     </div>
   );
 };
+
