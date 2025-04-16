@@ -1,4 +1,6 @@
+
 import React from "react";
+import { Avatar, AvatarImage, AvatarFallback } from "../ui/avatar";
 
 interface ChatListItemProps {
   avatar: string;
@@ -17,6 +19,16 @@ export const ChatListItem: React.FC<ChatListItemProps> = ({
   isUnread = false,
   isBold = false,
 }) => {
+  // Get initials from name for avatar fallback
+  const getInitials = (name: string) => {
+    return name
+      .split(' ')
+      .map(part => part[0])
+      .join('')
+      .toUpperCase()
+      .slice(0, 2);
+  };
+  
   return (
     <div className="w-full font-normal px-1">
       <div
@@ -32,16 +44,15 @@ export const ChatListItem: React.FC<ChatListItemProps> = ({
               isBold ? "font-bold" : ""
             } leading-5 flex-1 shrink basis-[0%] my-auto`}
           >
-            <img
-              src={avatar}
-              className="aspect-[1] object-contain w-5 self-stretch shrink-0 my-auto"
-              alt={name}
-            />
-            <div className="self-stretch flex-1 shrink basis-[0%] my-auto text-ellipsis">
+            <Avatar className="w-5 h-5">
+              <AvatarImage src={avatar} alt={name} />
+              <AvatarFallback className="text-xs">{getInitials(name)}</AvatarFallback>
+            </Avatar>
+            <div className="self-stretch flex-1 shrink basis-[0%] my-auto text-ellipsis overflow-hidden whitespace-nowrap">
               {name}
             </div>
           </div>
-          <div className="text-[#616161] text-right text-xs font-normal leading-4 self-stretch my-auto">
+          <div className="text-[#616161] text-right text-xs font-normal leading-4 self-stretch my-auto whitespace-nowrap">
             {timestamp}
           </div>
         </div>

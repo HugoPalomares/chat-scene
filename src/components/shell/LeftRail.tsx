@@ -1,6 +1,9 @@
+
 import React from "react";
 import { ChatListSection } from "./ChatListSection";
 import { ChatListItem } from "./ChatListItem";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { User, UserRound, Users, MessageCircle } from "lucide-react";
 
 export const LeftRail: React.FC = () => {
   return (
@@ -38,14 +41,14 @@ export const LeftRail: React.FC = () => {
         <ChatListSection title="Chats" className="mt-1">
           <ChatListItem
             avatar="https://cdn.builder.io/api/v1/image/assets/7114281f625a4fe383a60299d1987d6e/b91514dda4d7ab18b508781d2a3056f629591c3c?placeholderIfAbsent=true"
-            name="Access reviews Agent"
+            name="Access Reviews Agent"
             timestamp="11:32 AM"
             isActive={true}
           />
           <ChatListItem
             avatar="https://cdn.builder.io/api/v1/image/assets/7114281f625a4fe383a60299d1987d6e/c8e337f17d2884595829457f9f954fbe31844722?placeholderIfAbsent=true"
             name="Emiliano Ceballos"
-            timestamp="1:55 PM"
+            timestamp="11:55 AM"
             isBold={true}
             isUnread={true}
           />
@@ -80,59 +83,39 @@ export const LeftRail: React.FC = () => {
             timestamp="Yesterday"
           />
           <ChatListItem
-            avatar="https://cdn.builder.io/api/v1/image/assets/7114281f625a4fe383a60299d1987d6e/870611e7be1b64307422244da8d6a98a9a370da9?placeholderIfAbsent=true"
-            name="Serena Davis"
-            timestamp="11:32 AM"
+            avatar="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fHByb2ZpbGV8ZW58MHx8MHx8fDA%3D"
+            name="Tanya Rodriguez"
+            timestamp="Monday"
           />
           <ChatListItem
-            avatar="https://cdn.builder.io/api/v1/image/assets/7114281f625a4fe383a60299d1987d6e/29c6f2849c0aa480cb7a8f10a18ad035fdad21be?placeholderIfAbsent=true"
-            name="Serena Davis"
-            timestamp="11:32 AM"
+            avatar="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzJ8fHByb2ZpbGV8ZW58MHx8MHx8fDA%3D"
+            name="Marcus Chen"
+            timestamp="Monday"
           />
           <ChatListItem
-            avatar="https://cdn.builder.io/api/v1/image/assets/7114281f625a4fe383a60299d1987d6e/3ab6bd8b370410ba6f70d773bfff3acecbd47762?placeholderIfAbsent=true"
-            name="Oscar Krogh"
-            timestamp="11:02 AM"
+            avatar="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D"
+            name="Elena Johnson"
+            timestamp="Sunday"
           />
           <ChatListItem
-            avatar="https://cdn.builder.io/api/v1/image/assets/7114281f625a4fe383a60299d1987d6e/b68f54d819bc14fae9d60d11182f426b7f625f33?placeholderIfAbsent=true"
-            name="Marketing team sync"
-            timestamp="10:43 AM"
+            avatar="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHByb2ZpbGV8ZW58MHx8MHx8fDA%3D"
+            name="David Park"
+            timestamp="Sunday"
           />
           <ChatListItem
-            avatar="https://cdn.builder.io/api/v1/image/assets/7114281f625a4fe383a60299d1987d6e/310d444058270b48ddbc2dc8d80c1b7cdb5b77fc?placeholderIfAbsent=true"
-            name="Kian Lambert"
-            timestamp="Yesterday"
+            avatar="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHByb2ZpbGV8ZW58MHx8MHx8fDA%3D"
+            name="Sophie Wilson"
+            timestamp="Last week"
           />
           <ChatListItem
-            avatar="https://cdn.builder.io/api/v1/image/assets/7114281f625a4fe383a60299d1987d6e/3ab6bd8b370410ba6f70d773bfff3acecbd47762?placeholderIfAbsent=true"
-            name="Oscar Krogh"
-            timestamp="11:02 AM"
+            avatar="https://images.unsplash.com/photo-1531891437562-4301cf35b7e4?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzR8fHByb2ZpbGV8ZW58MHx8MHx8fDA%3D"
+            name="Project Q Brainstorm"
+            timestamp="Last week"
           />
           <ChatListItem
-            avatar="https://cdn.builder.io/api/v1/image/assets/7114281f625a4fe383a60299d1987d6e/b68f54d819bc14fae9d60d11182f426b7f625f33?placeholderIfAbsent=true"
-            name="Marketing team sync"
-            timestamp="10:43 AM"
-          />
-          <ChatListItem
-            avatar="https://cdn.builder.io/api/v1/image/assets/7114281f625a4fe383a60299d1987d6e/07671de727d90f84df762eeba743f9e7a5d528a5?placeholderIfAbsent=true"
-            name="Kian Lambert"
-            timestamp="Yesterday"
-          />
-          <ChatListItem
-            avatar="https://cdn.builder.io/api/v1/image/assets/7114281f625a4fe383a60299d1987d6e/10aff7e74c0dfff56ff57a7ddaadf5df8dbdeec0?placeholderIfAbsent=true"
-            name="Team Design Template"
-            timestamp="Yesterday"
-          />
-          <ChatListItem
-            avatar="https://cdn.builder.io/api/v1/image/assets/7114281f625a4fe383a60299d1987d6e/b68f54d819bc14fae9d60d11182f426b7f625f33?placeholderIfAbsent=true"
-            name="Marie's B-day gift"
-            timestamp="Yesterday"
-          />
-          <ChatListItem
-            avatar="https://cdn.builder.io/api/v1/image/assets/7114281f625a4fe383a60299d1987d6e/ca62455835643edad5831be22888bbcdb06207b2?placeholderIfAbsent=true"
-            name="Serena Davis"
-            timestamp="11:32 AM"
+            avatar="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjZ8fHByb2ZpbGV8ZW58MHx8MHx8fDA%3D"
+            name="James Sullivan"
+            timestamp="April 10"
           />
         </ChatListSection>
       </div>
