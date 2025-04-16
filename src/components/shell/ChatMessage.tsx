@@ -18,7 +18,7 @@ export const ChatMessage: React.FC<ChatMessageProps> = ({
 }) => {
   if (isUser) {
     return (
-      <div className="rounded flex w-full max-w-[1052px] justify-end ml-auto gap-1.5 max-md:max-w-full">
+      <div className="rounded flex w-full max-w-[1052px] justify-end ml-auto gap-1.5 max-md:max-w-full mb-4">
         <div className="flex flex-col items-end">
           <div className="text-[#616161] text-xs leading-4 mr-4 mb-1">{timestamp}</div>
           <div className="text-sm text-[#242424] leading-5">
@@ -34,11 +34,11 @@ export const ChatMessage: React.FC<ChatMessageProps> = ({
   }
 
   return (
-    <div className="rounded flex w-full max-w-[1052px] gap-1.5 max-md:max-w-full">
+    <div className="rounded flex w-full max-w-[1052px] gap-1.5 max-md:max-w-full mb-4">
       <div className="min-w-60 w-full flex-1 shrink basis-[0%] max-md:max-w-full">
         <div className="flex w-full max-w-[912px] gap-1.5 flex-wrap max-md:max-w-full">
           {avatar && (
-            <div className="flex items-center gap-2.5 w-8 pt-6">
+            <div className="flex items-start gap-2.5 w-8 pt-0">
               <div className="rounded bg-[rgba(236,236,236,1)] self-stretch flex w-8 items-center gap-2.5 overflow-hidden h-8 my-auto p-1">
                 <div className="rounded bg-[rgba(255,255,255,0)] self-stretch flex min-h-6 w-6 items-center overflow-hidden justify-center h-6 my-auto">
                   <img

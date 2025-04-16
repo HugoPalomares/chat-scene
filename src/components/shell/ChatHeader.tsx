@@ -2,7 +2,7 @@ import React from "react";
 
 export const ChatHeader: React.FC = () => {
   return (
-    <div className="bg-white w-full overflow-hidden pt-[7px] max-md:max-w-full">
+    <div className="bg-white w-full overflow-hidden max-md:max-w-full">
       <div className="z-10 flex w-full max-w-[907px] items-stretch gap-5 flex-wrap justify-between ml-5 mr-3.5 max-md:max-w-full max-md:mr-2.5">
         <div className="flex items-center gap-[11px]">
           <img
