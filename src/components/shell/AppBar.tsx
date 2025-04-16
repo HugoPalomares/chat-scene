@@ -5,6 +5,7 @@ import { Link, useLocation } from "react-router-dom";
 export const AppBar: React.FC = () => {
   const location = useLocation();
   const isReviewsPage = location.pathname === "/reviews";
+  const isChatPage = location.pathname === "/";
 
   return (
     <div className="w-[68px] pb-[467px] border-[rgba(0,0,0,0.05)] border-r max-md:hidden max-md:pb-[100px]">
@@ -17,7 +18,7 @@ export const AppBar: React.FC = () => {
         <Link to="/">
           <img
             src="https://cdn.builder.io/api/v1/image/assets/7114281f625a4fe383a60299d1987d6e/b00f2e35e11f5abaaca3b6bd5b0d03b652dd859b?placeholderIfAbsent=true"
-            className={`aspect-[1.21] object-contain w-[68px] rounded ${location.pathname === "/" ? "border-l-4 border-[#6264a7]" : ""}`}
+            className={`aspect-[1.21] object-contain w-[68px] rounded ${isChatPage ? "border-l-4 border-[#6264a7]" : ""}`}
             alt="Tab 2"
           />
         </Link>
@@ -39,6 +40,7 @@ export const AppBar: React.FC = () => {
               <path d="M8.75 14H19.25" stroke={isReviewsPage ? "#6264a7" : "#666666"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               <path d="M8.75 17.5H14" stroke={isReviewsPage ? "#6264a7" : "#666666"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
+            <span className="text-xs text-[#666666] ml-1 font-medium" style={{ color: isReviewsPage ? "#6264a7" : "#666666" }}>Reviews</span>
           </div>
         </Link>
         <img
