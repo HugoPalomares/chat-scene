@@ -1,10 +1,9 @@
-
 import React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, Clock, MessageSquare, CheckCircle, AlertCircle, TrendingUp, ChevronDown, ChevronUp } from "lucide-react";
+import { Calendar, Clock, MessageSquare, CheckCircle, AlertCircle, TrendingUp, ChevronDown } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 
@@ -123,11 +122,7 @@ export const ConversationSummary: React.FC<ConversationSummaryProps> = ({ onEven
                     <h3 className="text-sm font-medium text-gray-700">{day.date}</h3>
                   </div>
                   <CollapsibleTrigger className="rounded-full p-1 hover:bg-gray-100 transition-colors">
-                    {open => (
-                      <div className="flex items-center justify-center h-5 w-5">
-                        <ChevronDown className="h-4 w-4 text-gray-500 transition-transform duration-200 data-[state=open]:rotate-180" />
-                      </div>
-                    )}
+                    <ChevronDown className="h-4 w-4 text-gray-500 transition-transform duration-200 data-[state=open]:rotate-180" />
                   </CollapsibleTrigger>
                 </div>
                 
