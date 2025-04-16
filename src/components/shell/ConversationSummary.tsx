@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -88,7 +89,7 @@ export const ConversationSummary: React.FC<ConversationSummaryProps> = ({ onEven
   };
 
   const [openSections, setOpenSections] = React.useState<{ [key: string]: boolean }>({
-    "May 12": false,
+    "May 12": true, // Changed to true so both sections are open by default
     "May 14": true,
   });
 
@@ -131,79 +132,81 @@ export const ConversationSummary: React.FC<ConversationSummaryProps> = ({ onEven
           <TabsTrigger value="decisions">Decisions</TabsTrigger>
         </TabsList>
         
-        <TabsContent value="timeline" className="flex-1 overflow-hidden">
+        <TabsContent value="timeline" className="flex-1 overflow-hidden pb-4">
           <ScrollArea className="h-full pr-4">
-            {summaryData.timeline.map((day, dayIndex) => (
-              <Collapsible 
-                key={dayIndex} 
-                className="mb-4" 
-                open={openSections[day.date]}
-                onOpenChange={() => toggleSection(day.date)}
-              >
-                <CollapsibleTrigger className="w-full flex items-center justify-between p-2 hover:bg-gray-50 rounded cursor-pointer">
-                  <div className="flex items-center gap-2">
-                    <Calendar className="h-4 w-4 text-gray-500" />
-                    <h3 className="text-sm font-medium text-gray-700">{day.date}</h3>
-                  </div>
-                  <div className="rounded-full p-1 hover:bg-gray-100 transition-colors">
-                    {openSections[day.date] ? (
-                      <ChevronUp className="h-4 w-4 text-gray-500" />
-                    ) : (
-                      <ChevronDown className="h-4 w-4 text-gray-500" />
-                    )}
-                  </div>
-                </CollapsibleTrigger>
-                
-                <CollapsibleContent className="mt-2">
-                  <div className="space-y-2">
-                    {day.events.map((event, eventIndex) => (
-                      <Card 
-                        key={eventIndex} 
-                        className="border-l-4 border-l-[#5B5FC7] hover:bg-gray-50 cursor-pointer transition-colors"
-                        onClick={() => handleEventClick(event.messageId)}
-                      >
-                        <CardContent className="p-3">
-                          <div className="flex items-start gap-2">
-                            {event.text === "Discussed 9 Accounting Clerks with John" ? (
-                              <Avatar className="h-5 w-5 mt-0.5">
-                                <AvatarImage 
-                                  src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=48&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTcxMzIxNzMzMg&ixlib=rb-4.0.3&q=80&w=48" 
-                                  alt="John" 
-                                />
-                                <AvatarFallback>JD</AvatarFallback>
-                              </Avatar>
-                            ) : (
-                              <div className="mt-0.5">
-                                {getEventIcon(event.type)}
-                              </div>
-                            )}
-                            <div className="flex-1">
-                              <p className="text-sm">{event.text}</p>
-                              <div className="flex items-center gap-1 mt-1">
-                                <Clock className="h-3 w-3 text-gray-400" />
-                                <span className="text-xs text-gray-500">{event.time}</span>
-                              </div>
-                              {event.showJoinButton && (
-                                <div className="mt-2">
-                                  <Button 
-                                    variant="outline" 
-                                    size="sm" 
-                                    className="w-full text-xs border-[#5B5FC7] text-[#5B5FC7] hover:bg-[#5B5FC7]/10"
-                                    onClick={handleJoinChat}
-                                  >
-                                    Request to join chat
-                                  </Button>
+            <div className="py-2">
+              {summaryData.timeline.map((day, dayIndex) => (
+                <Collapsible 
+                  key={dayIndex} 
+                  className="mb-4" 
+                  open={openSections[day.date]}
+                  onOpenChange={() => toggleSection(day.date)}
+                >
+                  <CollapsibleTrigger className="w-full flex items-center justify-between p-2 hover:bg-gray-50 rounded cursor-pointer">
+                    <div className="flex items-center gap-2">
+                      <Calendar className="h-4 w-4 text-gray-500" />
+                      <h3 className="text-sm font-medium text-gray-700">{day.date}</h3>
+                    </div>
+                    <div className="rounded-full p-1 hover:bg-gray-100 transition-colors">
+                      {openSections[day.date] ? (
+                        <ChevronUp className="h-4 w-4 text-gray-500" />
+                      ) : (
+                        <ChevronDown className="h-4 w-4 text-gray-500" />
+                      )}
+                    </div>
+                  </CollapsibleTrigger>
+                  
+                  <CollapsibleContent className="mt-2">
+                    <div className="space-y-2">
+                      {day.events.map((event, eventIndex) => (
+                        <Card 
+                          key={eventIndex} 
+                          className="border-l-4 border-l-[#5B5FC7] hover:bg-gray-50 cursor-pointer transition-colors"
+                          onClick={() => handleEventClick(event.messageId)}
+                        >
+                          <CardContent className="p-3">
+                            <div className="flex items-start gap-2">
+                              {event.text === "Discussed 9 Accounting Clerks with John" ? (
+                                <Avatar className="h-5 w-5 mt-0.5">
+                                  <AvatarImage 
+                                    src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=48&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTcxMzIxNzMzMg&ixlib=rb-4.0.3&q=80&w=48" 
+                                    alt="John" 
+                                  />
+                                  <AvatarFallback>JD</AvatarFallback>
+                                </Avatar>
+                              ) : (
+                                <div className="mt-0.5">
+                                  {getEventIcon(event.type)}
                                 </div>
                               )}
+                              <div className="flex-1">
+                                <p className="text-sm">{event.text}</p>
+                                <div className="flex items-center gap-1 mt-1">
+                                  <Clock className="h-3 w-3 text-gray-400" />
+                                  <span className="text-xs text-gray-500">{event.time}</span>
+                                </div>
+                                {event.showJoinButton && (
+                                  <div className="mt-2">
+                                    <Button 
+                                      variant="outline" 
+                                      size="sm" 
+                                      className="w-full text-xs border-[#5B5FC7] text-[#5B5FC7] hover:bg-[#5B5FC7]/10"
+                                      onClick={handleJoinChat}
+                                    >
+                                      Request to join chat
+                                    </Button>
+                                  </div>
+                                )}
+                              </div>
                             </div>
-                          </div>
-                        </CardContent>
-                      </Card>
-                    ))}
-                  </div>
-                </CollapsibleContent>
-              </Collapsible>
-            ))}
+                          </CardContent>
+                        </Card>
+                      ))}
+                    </div>
+                  </CollapsibleContent>
+                </Collapsible>
+              ))}
+            </div>
           </ScrollArea>
         </TabsContent>
         

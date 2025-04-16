@@ -159,7 +159,7 @@ export const ChatContent: React.FC<ChatContentProps> = ({ highlightedMessageId }
   }, [highlightedMessageId]);
 
   return (
-    <ScrollArea className="flex-1 overflow-y-auto h-full">
+    <ScrollArea className="flex-1 overflow-y-auto h-full pb-4">
       <div className="flex w-full flex-col px-[72px] py-10 max-md:px-5">
         {messageData.map((message, index) => (
           <ChatMessage
