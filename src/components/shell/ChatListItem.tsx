@@ -52,11 +52,13 @@ export const ChatListItem: React.FC<ChatListItemProps> = ({
                 <AvatarFallback className="text-xs">{getInitials(name)}</AvatarFallback>
               </Avatar>
               {isVerified && (
-                <CheckCircle2 
-                  className="absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2 w-3 h-3 text-green-500 z-20" 
-                  fill="white" 
-                  strokeWidth={2} 
-                />
+                <div className="absolute bottom-0 right-0 translate-x-1/3 translate-y-1/3 rounded-full bg-white p-0.5">
+                  <CheckCircle2 
+                    className="w-2.5 h-2.5 text-green-500" 
+                    fill="white" 
+                    strokeWidth={2} 
+                  />
+                </div>
               )}
             </div>
             <div className="self-stretch flex-1 shrink basis-[0%] my-auto text-ellipsis overflow-hidden whitespace-nowrap">
