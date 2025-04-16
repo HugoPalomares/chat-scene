@@ -16,6 +16,16 @@ export const ChatContent: React.FC = () => {
             <>
               Hi Will, I need your input on the current Salesforce access review. To help expedite the process, I've already reviewed about 80% of the users, but I need your decisions on the remaining cases.
               <br /><br />
+              <AccessReviewCard />
+            </>
+          }
+        />
+        <ChatMessage
+          sender="Access review Agent"
+          timestamp="5/12, 9:15 AM"
+          avatar="https://cdn.builder.io/api/v1/image/assets/7114281f625a4fe383a60299d1987d6e/bbf4c6d64799b006bfa3862b2510c8308095337e?placeholderIfAbsent=true"
+          content={
+            <>
               Let's start with the group I've already reviewed: There are 80 users, all Controllers in the Finance department. They are actively using their 'Analytics Cloud' role, which you previously approved. Based on this, my recommendation is to retain their access. Do you agree?
             </>
           }
@@ -115,4 +125,3 @@ export const ChatContent: React.FC = () => {
     </ScrollArea>
   );
 };
-
