@@ -1,7 +1,14 @@
 
-import React from "react";
+import React, { useState } from "react";
+import { PostponeReviewModal } from "./PostponeReviewModal";
 
 export const AccessReviewCard: React.FC = () => {
+  const [showPostponeModal, setShowPostponeModal] = useState(false);
+
+  const handlePostponeClick = () => {
+    setShowPostponeModal(true);
+  };
+
   return (
     <div className="max-w-[360px] shadow-[0px_2px_4px_0px_rgba(0,0,0,0.14),0px_0px_2px_0px_rgba(0,0,0,0.12)] bg-white w-[360px] overflow-hidden mt-[22px] py-3 rounded-[Corner_radiusLarge]">
       <div className="flex min-w-[180px] w-full items-center gap-2.5 px-3">
@@ -86,7 +93,26 @@ export const AccessReviewCard: React.FC = () => {
             <div className="self-stretch my-auto">Start review</div>
           </div>
         </div>
+        
+        <div 
+          onClick={handlePostponeClick} 
+          className="rounded bg-white border flex items-center gap-1 justify-center px-2 py-0.5 border-[rgba(209,209,209,1)] border-solid cursor-pointer hover:bg-gray-50"
+        >
+          <img
+            src="https://cdn.builder.io/api/v1/image/assets/7114281f625a4fe383a60299d1987d6e/c91f120e807a079949f7759011619b0bcf7eb748?placeholderIfAbsent=true"
+            className="aspect-[1] object-contain w-5 self-stretch shrink-0 my-auto"
+            alt="Calendar"
+          />
+          <div className="self-stretch flex min-h-5 items-center gap-1 justify-center my-auto">
+            <div className="self-stretch my-auto">Postpone review</div>
+          </div>
+        </div>
       </div>
+      
+      <PostponeReviewModal 
+        open={showPostponeModal} 
+        onOpenChange={setShowPostponeModal} 
+      />
     </div>
   );
 };
